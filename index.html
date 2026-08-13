@@ -6,7 +6,7 @@
 
 <!-- ============ SEO: PRIMARY META ============ -->
 <title>Riverside Pilots Flying Club | Aircraft Rental &amp; Membership at Riverside Municipal Airport (KRAL)</title>
-<meta name="description" content="Join the Riverside Pilots Flying Club (RPFC) — a member-owned, non-profit flying club at Riverside Municipal Airport (KRAL) for 40+ years. Rent a Cessna 172, Cessna 182, or Piper Cherokee from $110/hr wet. Full and Affiliate memberships available. Apply today." />
+<meta name="description" content="Join the Riverside Pilots Flying Club (RPFC) — a member-owned, non-profit flying club at Riverside Municipal Airport (KRAL) for 40+ years. Rent a glass-panel Cessna 172, Cessna 182, or Piper Cherokee from $110/hr wet — Garmin G5/G3X and GTN 750 equipped. Full and Affiliate memberships available. Apply today." />
 <meta name="keywords" content="Riverside Pilots Flying Club, RPFC, flying club Riverside, aircraft rental Riverside, Cessna rental KRAL, Riverside Municipal Airport, flying club Southern California, Piper Cherokee rental, aircraft rental Corona, learn to fly Riverside, non-profit flying club" />
 <meta name="author" content="Riverside Pilots Flying Club" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
@@ -75,7 +75,7 @@
         {
           "@type": "Question",
           "name": "What aircraft can members fly?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The shared fleet includes a Cessna 172M, a Cessna 182P, and a Piper Cherokee PA-28-235, all well maintained with recent engine overhauls and upgrades." }
+          "acceptedAnswer": { "@type": "Answer", "text": "The shared fleet includes a Cessna 172M, a Cessna 182P, and a Piper Cherokee PA-28-235, all well maintained with recent engine overhauls. All three are IFR-capable with Garmin GTN 750-series navigators: the 172 has dual Garmin G5s and a 4-place intercom, the 182 has a Garmin G3X, GTN 750xi, autopilot and 4-place intercom, and the Cherokee 235 has dual G5s, an autopilot, and a 4-place intercom with Bluetooth audio for music. All aircraft are kept in a private club hangar that also serves as the club meeting area." }
         },
         {
           "@type": "Question",
@@ -294,6 +294,22 @@
   .reveal{opacity:0; transform:translateY(24px); transition:.7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1; transform:none}
 
+  /* ---- avionics + clubhouse (added) ---- */
+  .avionics{margin-top:1rem; padding-top:.9rem; border-top:1px dashed var(--line)}
+  .avionics .lbl{display:block; font-family:"Sora"; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--blue); font-weight:600; margin-bottom:.55rem}
+  .av-pills{display:flex; flex-wrap:wrap; gap:.4rem}
+  .av-pill{background:var(--sky); color:var(--blue-d); font-family:"Sora"; font-weight:600; font-size:.76rem;
+    padding:.3rem .65rem; border-radius:999px; white-space:nowrap}
+  .av-pill.new{background:#ffe8db; color:#b4470f}
+  .clubhouse{margin-top:1.6rem; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+    border-radius:var(--radius); padding:1.3rem 1.5rem}
+  .clubhouse h3{font-size:1.15rem; margin:0 0 .5rem; color:#fff}
+  .clubhouse p{margin:0 0 .8rem; color:rgba(255,255,255,.78); font-size:.95rem}
+  .clubhouse .ch-pills{display:flex; flex-wrap:wrap; gap:.4rem}
+  .clubhouse .ch-pills span{background:rgba(255,255,255,.14); color:#dbeafe; font-family:"Sora"; font-weight:600;
+    font-size:.76rem; padding:.28rem .62rem; border-radius:999px}
+
   /* ---- membership tiers (added) ---- */
   .tiers{display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; margin-top:2.6rem; align-items:start}
   .price-card.alt{background:linear-gradient(160deg,#123a63,#0b1f33); border:2px solid var(--sun)}
@@ -458,7 +474,7 @@
     <div class="center" style="max-width:640px">
       <span class="eyebrow">The fleet</span>
       <h2>Three aircraft. Every mission covered.</h2>
-      <p class="lead center">From building hours in the 172 to hauling the family in the 182 or Cherokee — recent engine overhauls, thoughtful upgrades, and low wet rates across the board.</p>
+      <p class="lead center">From building hours in the 172 to hauling the family in the 182 or Cherokee — recent engine overhauls, glass panels and GTN 750 navigators across the fleet, and low wet rates on all three.</p>
     </div>
     <div class="cards">
 
@@ -476,10 +492,13 @@
           <ul>
             <li><span>Year</span><span>1975</span></li>
             <li><span>Seats</span><span>4</span></li>
-            <li><span>Avionics</span><span>Garmin GTN 750 <em style="color:var(--sun); font-style:normal">(new)</em></span></li>
             <li><span>Best for</span><span>Training &amp; time-building</span></li>
             <li><span>Available to</span><span>Full &amp; Affiliate</span></li>
           </ul>
+          <div class="avionics">
+            <span class="lbl">Avionics &amp; equipment</span>
+            <div class="av-pills"><span class="av-pill">Dual Garmin G5</span><span class="av-pill new">Garmin GTN 750</span><span class="av-pill">4-place intercom</span></div>
+          </div>
         </div>
       </article>
 
@@ -500,6 +519,10 @@
             <li><span>Best for</span><span>Cross-country &amp; family trips</span></li>
             <li><span>Available to</span><span>Full members</span></li>
           </ul>
+          <div class="avionics">
+            <span class="lbl">Avionics &amp; equipment</span>
+            <div class="av-pills"><span class="av-pill">Garmin G3X</span><span class="av-pill">Garmin GTN 750xi</span><span class="av-pill">Autopilot</span><span class="av-pill">4-place intercom</span></div>
+          </div>
         </div>
       </article>
 
@@ -520,11 +543,15 @@
             <li><span>Best for</span><span>Heavy loads &amp; low-wing lovers</span></li>
             <li><span>Available to</span><span>Full &amp; Affiliate</span></li>
           </ul>
+          <div class="avionics">
+            <span class="lbl">Avionics &amp; equipment</span>
+            <div class="av-pills"><span class="av-pill">Dual Garmin G5</span><span class="av-pill">Garmin GTN 750</span><span class="av-pill">Autopilot</span><span class="av-pill">4-place intercom</span><span class="av-pill">Bluetooth audio</span></div>
+          </div>
         </div>
       </article>
 
     </div>
-    <p class="center" style="margin-top:2rem; color:var(--muted)">All rates are "wet" (fuel included) &middot; No per-day minimums &middot; Reviewed twice a year by members</p>
+    <p class="center" style="margin-top:2rem; color:var(--muted)">All rates are "wet" (fuel included) &middot; No per-day minimums &middot; Every aircraft IFR-capable with a GTN 750-series navigator &middot; Reviewed twice a year by members</p>
   </div>
 </section>
 
@@ -554,6 +581,7 @@
           <li><span class="ic y">&#10003;</span> All three aircraft — 172, 182 and Cherokee 235</li>
           <li><span class="ic y">&#10003;</span> Full voting rights at club meetings</li>
           <li><span class="ic y">&#10003;</span> Eligible to serve on the board and as a Plane Captain</li>
+          <li><span class="ic y">&#10003;</span> Private hangar clubhouse — desk, TV, fridge and restroom</li>
           <li><span class="ic y">&#10003;</span> Programs, fly-ins and quarterly safety seminars</li>
         </ul>
         <a class="btn btn-sun" href="#contact" style="position:relative;z-index:2; width:100%; justify-content:center">Apply for Full membership</a>
@@ -575,7 +603,7 @@
         <ul class="tier-list">
           <li><span class="ic y">&#10003;</span> Cessna 172M and Piper Cherokee PA-28-235</li>
           <li><span class="ic y">&#10003;</span> Same wet rates, same self-scheduled calendar</li>
-          <li><span class="ic y">&#10003;</span> Same programs, fly-ins and safety seminars</li>
+          <li><span class="ic y">&#10003;</span> Same hangar clubhouse, programs, fly-ins and safety seminars</li>
           <li class="no"><span class="ic n">&#10007;</span> No Cessna 182 access</li>
           <li class="no"><span class="ic n">&#10007;</span> No voting rights, not eligible for the board</li>
         </ul>
@@ -616,6 +644,7 @@
           <tr><td>Voting rights</td><td class="c y">&#10003;</td><td class="c n">&mdash;</td></tr>
           <tr><td>Eligible to serve on the board</td><td class="c y">&#10003;</td><td class="c n">&mdash;</td></tr>
           <tr><td>Self-scheduling, no daily minimums, FBO fuel reimbursement</td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
+          <tr><td>Hangar clubhouse &mdash; desk, TV, fridge, restroom</td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
           <tr><td>Programs, fly-ins &amp; safety seminars</td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
           <tr><td>Path to upgrade</td><td class="c" style="color:var(--muted)">&mdash;</td><td class="c amt">+$1,700</td></tr>
         </tbody>
@@ -678,6 +707,13 @@
         <div><b>Riverside, CA</b><span>Inland Empire</span></div>
         <div><b>6951 Flight Rd</b><span>Riverside, CA 92504</span></div>
         <div><b>(909) 206-6938</b><span>Club phone</span></div>
+      </div>
+      <div class="clubhouse">
+        <h3>Our hangar is also the clubhouse</h3>
+        <p>All three aircraft live in a private club hangar that doubles as our meeting space — so preflight, hangar flying, and monthly meetings all happen in the same place, out of the sun.</p>
+        <div class="ch-pills">
+          <span>Desk &amp; chairs</span><span>TV</span><span>Refrigerator</span><span>Restroom</span><span>Secure hangar storage</span>
+        </div>
       </div>
       <a class="btn btn-ghost" style="margin-top:1.6rem; border-color:rgba(255,255,255,.5)" href="https://www.airnav.com/airport/KRAL" target="_blank" rel="noopener">View KRAL on AirNav &rarr;</a>
     </div>
