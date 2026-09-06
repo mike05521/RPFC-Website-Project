@@ -342,38 +342,6 @@
   table.cmp .y{color:#1d8a55; font-weight:700} table.cmp .n{color:#c2410c; font-weight:700}
   table.cmp .amt{font-family:"Sora"; font-weight:700}
 
-  /* Cost comparison */
-  .cost-comparison{background:var(--mist)}
-  .cost-scenario{display:inline-flex; align-items:center; gap:.55rem; margin:1rem 0 0; padding:.45rem .9rem;
-    border-radius:999px; background:var(--sky); color:var(--blue-d); font-family:"Sora"; font-size:.84rem; font-weight:600}
-  .cost-scenario::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--sun)}
-  .scenario-note{margin:.45rem 0 0; color:var(--muted); font-size:.8rem}
-  .cost-table-wrap{margin-top:2.6rem; overflow:hidden; background:#fff; border:1px solid var(--line);
-    border-radius:var(--radius); box-shadow:var(--shadow)}
-  table.cost-table{border-collapse:collapse; width:100%}
-  table.cost-table th,table.cost-table td{padding:1.15rem 1.3rem; border-bottom:1px solid var(--line)}
-  table.cost-table thead th{background:var(--navy); color:#fff; font-family:"Sora"; font-weight:600; text-align:right}
-  table.cost-table thead th:first-child{text-align:left}
-  table.cost-table tbody th{text-align:left; font-family:"Sora"; color:var(--navy); font-weight:700}
-  table.cost-table tbody td{text-align:right; font-family:"Sora"; color:var(--ink); font-weight:700; font-size:1.08rem}
-  table.cost-table tbody tr:last-child th,table.cost-table tbody tr:last-child td{border-bottom:0}
-  table.cost-table tbody tr:nth-child(even){background:var(--mist)}
-  table.cost-table tbody tr.club-row th{border-left:5px solid var(--blue)}
-  .cost-plan-note{display:block; margin-top:.18rem; color:var(--muted); font-family:"Instrument Sans"; font-size:.82rem; font-weight:400}
-  .cost-best{color:#1d8a55}
-  .cost-savings{display:flex; justify-content:space-between; align-items:center; gap:1.5rem; padding:1.2rem 1.3rem;
-    background:var(--sky); border-top:1px solid var(--line)}
-  .cost-savings strong{display:block; color:var(--navy); font-family:"Sora"; font-size:1.05rem}
-  .cost-savings span{color:var(--muted); font-size:.92rem}
-  .cost-savings .cost-difference{flex:none; padding:.5rem .85rem; border-radius:999px; background:#fff; color:var(--sun-d);
-    font-family:"Sora"; font-weight:700; box-shadow:0 6px 18px -12px rgba(11,37,64,.5)}
-  .value-callout{margin-top:1.6rem; padding:1.6rem; background:var(--navy); color:#fff; border-radius:var(--radius)}
-  .value-callout h3{color:#fff; margin:0 0 1rem}
-  .value-list{display:grid; grid-template-columns:repeat(5,1fr); gap:.7rem; margin:0; padding:0; list-style:none}
-  .value-list li{display:flex; gap:.5rem; align-items:flex-start; padding:.8rem; border-radius:12px;
-    background:rgba(255,255,255,.08); color:rgba(255,255,255,.9); font-size:.9rem; line-height:1.35}
-  .value-list li::before{content:"\2713"; flex:none; color:#5be584; font-weight:700}
-  .cost-footnote{max-width:100ch; margin:1.3rem auto 0; color:var(--muted); font-size:.84rem; text-align:center}
   @media (max-width:900px){ .tiers{grid-template-columns:1fr} .upgrade-note{grid-template-columns:1fr} }
 
   @media (max-width:900px){
@@ -388,7 +356,6 @@
     .board-grid{grid-template-columns:repeat(3,1fr)}
     .stats .row{grid-template-columns:1fr 1fr; gap:1.6rem}
     .insta .strip{grid-template-columns:repeat(3,1fr)}
-    .value-list{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:560px){
     .brand .brandtxt{display:none}
@@ -406,23 +373,6 @@
     .board-grid{grid-template-columns:1fr 1fr}
     .hero-badges{gap:1.2rem}
     .avatar{width:120px;height:120px}
-    .cost-table-wrap{overflow:visible; background:transparent; border:0; box-shadow:none}
-    table.cost-table,table.cost-table tbody,table.cost-table tr,table.cost-table th,table.cost-table td{display:block; width:100%}
-    table.cost-table thead{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0);
-      white-space:nowrap; border:0}
-    table.cost-table tbody{display:grid; gap:1rem}
-    table.cost-table tbody tr{overflow:hidden; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
-      box-shadow:0 12px 30px -22px rgba(11,37,64,.45)}
-    table.cost-table tbody tr:nth-child(even){background:#fff}
-    table.cost-table tbody th{padding:1rem 1.1rem; border-bottom:1px solid var(--line); background:var(--navy); color:#fff}
-    table.cost-table tbody tr.club-row th{border-left:5px solid var(--sun)}
-    table.cost-table tbody .cost-plan-note{color:rgba(255,255,255,.7)}
-    table.cost-table tbody td{display:flex; justify-content:space-between; gap:1rem; padding:.72rem 1.1rem; font-size:1rem}
-    table.cost-table tbody td::before{content:attr(data-label); color:var(--muted); font-family:"Instrument Sans"; font-weight:500}
-    table.cost-table tbody tr:last-child th{border-bottom:1px solid var(--line)}
-    table.cost-table tbody tr:last-child td:not(:last-child){border-bottom:1px solid var(--line)}
-    .cost-savings{margin-top:1rem; border:1px solid var(--line); border-radius:var(--radius); flex-direction:column; align-items:flex-start}
-    .value-list{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -444,7 +394,6 @@
       <a href="#about">About</a>
       <a href="#fleet">Aircraft</a>
       <a href="#membership">Membership</a>
-      <a href="#cost-comparison">Compare Costs</a>
       <a href="#board">Board</a>
       <a href="#location">Location</a>
       <a class="btn btn-sun" href="#contact">Apply Now</a>
@@ -707,73 +656,6 @@
   </div>
 </section>
 
-<!-- ============ COST COMPARISON ============ -->
-<section class="cost-comparison" id="cost-comparison">
-  <div class="wrap">
-    <div class="center" style="max-width:760px">
-      <span class="eyebrow">Transparent annual costs</span>
-      <h2>Compare the real cost of flying.</h2>
-      <p class="lead center">At 33 hours a year in a Cessna 172, compare the annual cash cost of club membership with renting from a typical flight school, then weigh the flexibility, access, and ownership that come with the club.</p>
-      <div class="cost-scenario">33 flight hours per year</div>
-      <p class="scenario-note">Approximately 1,000 annual club hours divided among 30 members.</p>
-    </div>
-
-    <div class="cost-table-wrap reveal">
-      <table class="cost-table">
-        <caption style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0">Annual Cessna 172 cost comparison at 33 flight hours per year</caption>
-        <thead>
-          <tr>
-            <th scope="col">Flying option</th>
-            <th scope="col">Year 1</th>
-            <th scope="col">Year 2+</th>
-            <th scope="col">Effective $/hr (Y2+)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="club-row">
-            <th scope="row">RPFC Full<span class="cost-plan-note">$2,500 initiation + $3,060 annual dues + flying</span></th>
-            <td data-label="Year 1">$9,190</td>
-            <td data-label="Year 2+">$6,690</td>
-            <td data-label="Effective $/hr (Y2+)">$203</td>
-          </tr>
-          <tr class="club-row">
-            <th scope="row">RPFC Affiliate<span class="cost-plan-note">$1,000 initiation + $3,060 annual dues + flying</span></th>
-            <td data-label="Year 1">$7,690</td>
-            <td data-label="Year 2+">$6,690</td>
-            <td data-label="Effective $/hr (Y2+)">$203</td>
-          </tr>
-          <tr>
-            <th scope="row">Typical flight school<span class="cost-plan-note">$170/hr wet in a typical C172</span></th>
-            <td data-label="Year 1">$5,610</td>
-            <td data-label="Year 2+"><span class="cost-best">$5,610</span></td>
-            <td data-label="Effective $/hr (Y2+)"><span class="cost-best">$170</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="cost-savings">
-        <div>
-          <strong>At 33 hours, typical flight school rental costs less in cash.</strong>
-          <span>Club membership is about $1,080 more in Year 2+, before weighing its scheduling, access, and ownership benefits. Year 1 also carries the one-time initiation.</span>
-        </div>
-        <div class="cost-difference">About $1,080 more per year</div>
-      </div>
-    </div>
-
-    <div class="value-callout reveal">
-      <h3>The value goes beyond the hourly rate.</h3>
-      <ul class="value-list">
-        <li>Self-scheduling on the club calendar</li>
-        <li>No daily minimums</li>
-        <li>Private hangar clubhouse</li>
-        <li>GTN 750 navigation and glass-equipped fleet</li>
-        <li>Member ownership and a vote for Full members</li>
-      </ul>
-    </div>
-
-    <p class="cost-footnote">Rates shown are wet. The school figure is a typical published wet rate for a C172 at KRAL-area schools. Club dues cover fixed costs. Initiation is a one-time, non-refundable fee. The refundable $500 security deposit is excluded from all totals.</p>
-  </div>
-</section>
-
 <!-- ============ HOW TO JOIN ============ -->
 <section id="join" class="fleet">
   <div class="wrap">
@@ -918,7 +800,6 @@
           <a href="#about">About</a>
           <a href="#fleet">Aircraft</a>
           <a href="#membership">Membership</a>
-          <a href="#cost-comparison">Compare Costs</a>
           <a href="#board">Board</a>
         </div>
         <div>
