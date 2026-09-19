@@ -184,6 +184,7 @@
 
   .grid{display:grid; gap:1.5rem}
   .split{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(2rem,5vw,4.5rem); align-items:center}
+  .split > *{min-width:0}
   .center{text-align:center; margin-inline:auto}
   .tag{display:inline-block; background:var(--sky); color:var(--blue-d); font-weight:600; font-size:.82rem; padding:.3rem .8rem; border-radius:999px}
 
@@ -194,7 +195,7 @@
   .stats span{color:rgba(255,255,255,.7); font-size:.95rem}
 
   .media{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); aspect-ratio:4/3; position:relative;
-    background:var(--scene) center/cover no-repeat, linear-gradient(135deg,#0b6bcb,#0a2540)}
+    width:100%; max-width:100%; background:var(--scene) center/cover no-repeat, linear-gradient(135deg,#0b6bcb,#0a2540)}
   .media img{width:100%; height:100%; object-fit:cover}
 
   /* Fleet cards */
@@ -359,6 +360,7 @@
   }
   @media (max-width:560px){
     .brand .brandtxt{display:none}
+    .nav-links.open{max-height:calc(100vh - 70px); overflow-y:auto}
     .hero .wrap{padding:22px 0 60px}
     .hero-logo img{height:104px}
     .hero-logo{padding:.5rem .8rem; border-radius:14px}
@@ -373,6 +375,34 @@
     .board-grid{grid-template-columns:1fr 1fr}
     .hero-badges{gap:1.2rem}
     .avatar{width:120px;height:120px}
+    .card .body{padding:1.2rem}
+    .card li{gap:1rem}
+    .card li span:last-child{text-align:right}
+    .price-card{padding:1.6rem}
+    .price-rows li{align-items:flex-start; gap:1rem}
+    .price-rows .amt{flex:none; font-size:1.15rem; text-align:right}
+    .ribbon{top:1rem; right:1rem}
+    .upgrade-note{padding:1.3rem}
+    .ladder{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:.65rem; width:100%; white-space:normal}
+    .ladder > div{min-width:0}
+    .ladder > div:last-child{text-align:right}
+    .ladder span{display:block; line-height:1.35; overflow-wrap:anywhere}
+    .ladder b{font-size:1.2rem}
+    .cmp-wrap{overflow:visible; background:transparent; border:0; border-radius:0; box-shadow:none}
+    table.cmp{display:block; min-width:0}
+    table.cmp thead{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0}
+    table.cmp tbody{display:grid; gap:1rem}
+    table.cmp tbody tr{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); background:#fff;
+      border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 10px 28px -22px rgba(11,37,64,.45)}
+    table.cmp tbody tr:nth-child(even){background:#fff}
+    table.cmp td{display:block; min-width:0; padding:.75rem 1rem; border-bottom:0; font-size:.9rem; overflow-wrap:anywhere}
+    table.cmp td:first-child{grid-column:1/-1; padding:.8rem 1rem; background:var(--sky); color:var(--navy);
+      border-bottom:1px solid var(--line); font-weight:600}
+    table.cmp td:nth-child(2){border-right:1px solid var(--line)}
+    table.cmp td[data-label]::before{content:attr(data-label); display:block; margin-bottom:.2rem; color:var(--muted);
+      font-family:"Sora"; font-size:.65rem; font-weight:600; letter-spacing:.08em; line-height:1.35; text-transform:uppercase}
+    table.cmp .c{text-align:left}
   }
 </style>
 </head>
@@ -634,18 +664,18 @@
           <tr><th>&nbsp;</th><th class="c">Full Member</th><th class="c">Affiliate Member</th></tr>
         </thead>
         <tbody>
-          <tr><td>One-time initiation (non-refundable)</td><td class="c amt">$3,000</td><td class="c amt">$1,500</td></tr>
-          <tr><td>Refundable security deposit</td><td class="c amt">$500</td><td class="c amt">$500</td></tr>
-          <tr><td>Monthly total <small style="color:var(--muted)">$180 dues + $55 engine + $10 upgrade/replacement reserves</small></td><td class="c amt">$245</td><td class="c amt">$245</td></tr>
-          <tr><td>Cessna 172M &mdash; N80131 <small style="color:var(--muted)">$110/hr wet</small></td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
-          <tr><td>Piper Cherokee PA-28-235 &mdash; N55462 <small style="color:var(--muted)">$155/hr wet</small></td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
-          <tr><td>Cessna 182P &mdash; N9137M <small style="color:var(--muted)">$155/hr wet</small></td><td class="c y">&#10003;</td><td class="c n">&mdash;</td></tr>
-          <tr><td>Voting rights</td><td class="c y">&#10003;</td><td class="c n">&mdash;</td></tr>
-          <tr><td>Eligible to serve on the board</td><td class="c y">&#10003;</td><td class="c n">&mdash;</td></tr>
-          <tr><td>Self-scheduling, no daily minimums, $6.86/gal FBO fuel reimbursement</td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
-          <tr><td>Hangar clubhouse &mdash; desk, TV, fridge, restroom</td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
-          <tr><td>Programs, fly-ins &amp; safety seminars</td><td class="c y">&#10003;</td><td class="c y">&#10003;</td></tr>
-          <tr><td>Path to upgrade</td><td class="c" style="color:var(--muted)">&mdash;</td><td class="c amt">$1,500 difference to Full</td></tr>
+          <tr><td>One-time initiation (non-refundable)</td><td class="c amt" data-label="Full Member">$3,000</td><td class="c amt" data-label="Affiliate Member">$1,500</td></tr>
+          <tr><td>Refundable security deposit</td><td class="c amt" data-label="Full Member">$500</td><td class="c amt" data-label="Affiliate Member">$500</td></tr>
+          <tr><td>Monthly total <small style="color:var(--muted)">$180 dues + $55 engine + $10 upgrade/replacement reserves</small></td><td class="c amt" data-label="Full Member">$245</td><td class="c amt" data-label="Affiliate Member">$245</td></tr>
+          <tr><td>Cessna 172M &mdash; N80131 <small style="color:var(--muted)">$110/hr wet</small></td><td class="c y" data-label="Full Member">&#10003;</td><td class="c y" data-label="Affiliate Member">&#10003;</td></tr>
+          <tr><td>Piper Cherokee PA-28-235 &mdash; N55462 <small style="color:var(--muted)">$155/hr wet</small></td><td class="c y" data-label="Full Member">&#10003;</td><td class="c y" data-label="Affiliate Member">&#10003;</td></tr>
+          <tr><td>Cessna 182P &mdash; N9137M <small style="color:var(--muted)">$155/hr wet</small></td><td class="c y" data-label="Full Member">&#10003;</td><td class="c n" data-label="Affiliate Member">&mdash;</td></tr>
+          <tr><td>Voting rights</td><td class="c y" data-label="Full Member">&#10003;</td><td class="c n" data-label="Affiliate Member">&mdash;</td></tr>
+          <tr><td>Eligible to serve on the board</td><td class="c y" data-label="Full Member">&#10003;</td><td class="c n" data-label="Affiliate Member">&mdash;</td></tr>
+          <tr><td>Self-scheduling, no daily minimums, $6.86/gal FBO fuel reimbursement</td><td class="c y" data-label="Full Member">&#10003;</td><td class="c y" data-label="Affiliate Member">&#10003;</td></tr>
+          <tr><td>Hangar clubhouse &mdash; desk, TV, fridge, restroom</td><td class="c y" data-label="Full Member">&#10003;</td><td class="c y" data-label="Affiliate Member">&#10003;</td></tr>
+          <tr><td>Programs, fly-ins &amp; safety seminars</td><td class="c y" data-label="Full Member">&#10003;</td><td class="c y" data-label="Affiliate Member">&#10003;</td></tr>
+          <tr><td>Path to upgrade</td><td class="c" data-label="Full Member" style="color:var(--muted)">&mdash;</td><td class="c amt" data-label="Affiliate Member">$1,500 difference to Full</td></tr>
         </tbody>
       </table>
     </div>
