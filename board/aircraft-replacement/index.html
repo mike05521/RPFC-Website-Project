@@ -162,6 +162,7 @@ footer b{color:#fff;font-family:Sora}
 .stp button:hover:not(:disabled){background:var(--sky);border-color:#b9d4f3}
 .stp button:disabled{opacity:.35;cursor:default}
 .stp output{flex:1;text-align:center;font-family:Sora;font-weight:800;font-size:20px;color:var(--navy)}
+.ctl label small .dd{font-weight:700;color:var(--navy)}.ctl.b label small .dd{color:var(--blue-dark)}
 .ctl.b{border-color:#b9d4f3}.ctl.b label{color:var(--blue-dark)}
 .wsum{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .wsum span{font-family:Sora;font-weight:700;font-size:14px;padding:7px 12px;border-radius:999px}
@@ -240,11 +241,11 @@ footer b{color:#fff;font-family:Sora}
         <div class="ctl"><label>Avg annual associate members<small>Plan B only · 0–15 · pay monthly dues</small></label><div class="stp" data-key="avgAssoc" data-min="0" data-max="15" data-step="1" data-def="5" data-fmt="n"><button type="button" class="dn" aria-label="Decrease">−</button><output>5</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
         <div class="ctl"><label>Associate-member turnover initiations / yr<small>Plan B only · 0–10</small></label><div class="stp" data-key="assocTo" data-min="0" data-max="10" data-step="1" data-def="2" data-fmt="n"><button type="button" class="dn" aria-label="Decrease">−</button><output>2</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
         <div class="ctl"><label>Associate member initiation<small>Plan B only · $500–$3,500</small></label><div class="stp" data-key="assocInit" data-min="500" data-max="3500" data-step="500" data-def="1000" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$1,000</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
-        <div class="ctl b"><label>Plan B monthly dues<small>$225–$260 · today $235</small></label><div class="stp" data-key="duesB" data-min="225" data-max="260" data-step="5" data-def="245" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$245</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
+        <div class="ctl b"><label>Plan B monthly dues<small><b class="dd" data-o="B.duesDelta">+$10</b> per member / mo vs today $235 · $225–$260</small></label><div class="stp" data-key="duesB" data-min="225" data-max="260" data-step="5" data-def="245" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$245</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
       </div>
       <div class="ctl-col c"><div class="ctl-h">Plan C<small>Stay at 30 · no associates</small></div>
         <div class="ctl"><label>Plan C full members<small>Plan C only · 20–40 · no associates</small></label><div class="stp" data-key="fullMembersC" data-min="20" data-max="40" data-step="1" data-def="30" data-fmt="n"><button type="button" class="dn" aria-label="Decrease">−</button><output>30</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
-        <div class="ctl c"><label>Plan C monthly dues<small>$225–$260 · today $235</small></label><div class="stp" data-key="duesC" data-min="225" data-max="260" data-step="5" data-def="255" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$255</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
+        <div class="ctl c"><label>Plan C monthly dues<small><b class="dd" data-o="C.duesDelta">+$20</b> per member / mo vs today $235 · $225–$260</small></label><div class="stp" data-key="duesC" data-min="225" data-max="260" data-step="5" data-def="255" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$255</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
       </div>
     </div>
     <div class="wsum"><span class="b">Plan B potential: <b data-o="B.potential">—</b> · <b data-o="B.surplusTxt">—</b></span><span class="c">Plan C potential: <b data-o="C.potential">—</b> · <b data-o="C.surplusTxt">—</b></span></div>
