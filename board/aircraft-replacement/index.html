@@ -84,6 +84,12 @@ table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--
 .cmp.mkt td.mk{color:var(--muted)}.cmp.mkt td.na{color:var(--muted);font-weight:500}
 .cmp.mkt td:first-child{width:auto}
 .mkt-note{margin-top:10px;font-size:13px}
+.mkt-sum{margin:10px 0 0;font-size:14px}
+.mkt-h{font-family:"Instrument Sans";font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);margin:16px 0 6px}
+.cmp.mkt small.sub{display:block;font-family:"Instrument Sans";font-weight:500;font-size:12px;color:var(--muted)}
+.cmp.mkt tr.grp td{background:var(--mist);font-weight:700;color:var(--navy);padding-top:8px;padding-bottom:8px}
+.cmp.mkt tr.grp td small{font-weight:500;color:var(--muted);font-size:12px}
+.cmp.mkt tr.ai td:first-child{padding-left:18px;color:var(--muted)}
 .cmp tr.tot td{background:var(--mist);font-weight:700}
 .cmp tr.tot td.num{font-size:19px}
 .up{color:var(--sun-dark);font-size:13px;font-weight:700;margin-left:6px;font-family:"Instrument Sans"}
@@ -208,16 +214,46 @@ footer b{color:#fff;font-family:Sora}
     </div>
     <div class="card">
       <h3 style="color:var(--navy);font-size:20px;margin-bottom:8px">Market context · all-in $/hr</h3>
-      <p style="margin:0 0 10px;color:var(--muted)">Club cost with dues and join fee loaded in, next to nearby wet rental comps (Ad Hoc deck). Updates live with the What-if steppers.</p>
+      <p style="margin:0 0 10px;color:var(--muted)">Assumes a member flies <b>50 hrs/yr</b>. Club cost = wet rate + dues spread over those hours + the join fee spread over 2, 5 or 10 years. Updates live with the What-if steppers.</p>
+      <div class="mkt-h">1 · Wet rates ($/hr, fuel included)</div>
       <table class="cmp mkt" style="box-shadow:none;font-size:15px">
-        <thead><tr><th>Aircraft</th><th>Market</th><th class="b">Plan B<br><small>Full</small></th><th class="b">Plan B<br><small>Associate</small></th><th class="c">Plan C<br><small>Full</small></th></tr></thead>
+        <thead><tr><th>Aircraft</th><th>Market</th><th class="b">Plan B</th><th class="c">Plan C</th></tr></thead>
         <tbody>
-          <tr><td>C172</td><td class="num mk">$150–175<small class="wet">wet only</small></td><td class="num"><span data-o="mk.c172.BF">—</span><small class="wet">wet <span data-o="mk.c172.wB">—</span></small></td><td class="num"><span data-o="mk.c172.BA">—</span><small class="wet">wet <span data-o="mk.c172.wB">—</span></small></td><td class="num"><span data-o="mk.c172.CF">—</span><small class="wet">wet <span data-o="mk.c172.wC">—</span></small></td></tr>
-          <tr><td>C182</td><td class="num mk">$253–260<small class="wet">wet only</small></td><td class="num"><span data-o="mk.c182.BF">—</span><small class="wet">wet <span data-o="mk.c182.wB">—</span></small></td><td class="num na" title="Associate members do not fly the 182">n/a<small class="wet">no 182</small></td><td class="num"><span data-o="mk.c182.CF">—</span><small class="wet">wet <span data-o="mk.c182.wC">—</span></small></td></tr>
-          <tr><td>Cherokee 235</td><td class="num mk">$276<small class="wet">wet only</small></td><td class="num"><span data-o="mk.p235.BF">—</span><small class="wet">wet <span data-o="mk.p235.wB">—</span></small></td><td class="num"><span data-o="mk.p235.BA">—</span><small class="wet">wet <span data-o="mk.p235.wB">—</span></small></td><td class="num"><span data-o="mk.p235.CF">—</span><small class="wet">wet <span data-o="mk.p235.wC">—</span></small></td></tr>
+          <tr><td>C172</td><td class="num mk">$150–175</td><td class="num"><span data-o="mk.c172.wB">—</span></td><td class="num"><span data-o="mk.c172.wC">—</span></td></tr>
+          <tr><td>C182</td><td class="num mk">$253–260</td><td class="num"><span data-o="mk.c182.wB">—</span></td><td class="num"><span data-o="mk.c182.wC">—</span></td></tr>
+          <tr><td>Cherokee 235</td><td class="num mk">$276</td><td class="num"><span data-o="mk.p235.wB">—</span></td><td class="num"><span data-o="mk.p235.wC">—</span></td></tr>
         </tbody>
       </table>
-      <p class="note mkt-note">All-in $/hr = wet rate + monthly dues × 12 ÷ <span data-o="mk.hrs">30</span> hrs + initiation ÷ (<span data-o="mk.hrs">30</span> hrs × <span data-o="mk.yrs">5</span> yrs). Assumes a typical member flies <b><span data-o="mk.hrs">30</span> hrs/yr</b> and spreads the join fee over the <span data-o="mk.yrs">5</span>-yr plan horizon. Plan B adds <span data-o="mk.dB">$0</span>/hr dues + <span data-o="mk.iF">$0</span>/hr full (<span data-o="mk.iA">$0</span>/hr associate) initiation; Plan C adds <span data-o="mk.dC">$0</span>/hr dues + <span data-o="mk.iF">$0</span>/hr initiation. Market rentals carry no initiation or club dues, so the all-in club figure is the fair compare. Plan C has no associate members.</p>
+      <div class="mkt-h">2 · Fixed costs added per flight hour (at 50 hrs/yr)</div>
+      <table class="cmp mkt" style="box-shadow:none;font-size:15px">
+        <thead><tr><th>Load</th><th class="b">Plan B<br><small>Full</small></th><th class="b">Plan B<br><small>Associate</small></th><th class="c">Plan C<br><small>Full</small></th></tr></thead>
+        <tbody>
+          <tr><td>Dues <small class="sub"><span data-o="mk.duesBm">—</span> / <span data-o="mk.duesCm">—</span> mo × 12 ÷ 50</small></td><td class="num"><span data-o="mk.dB">—</span></td><td class="num"><span data-o="mk.dB">—</span></td><td class="num"><span data-o="mk.dC">—</span></td></tr>
+          <tr><td>Initiation · over 2 yrs <small class="sub">÷ 100 hrs</small></td><td class="num"><span data-o="mk.iF2">—</span></td><td class="num"><span data-o="mk.iA2">—</span></td><td class="num"><span data-o="mk.iF2">—</span></td></tr>
+          <tr><td>Initiation · over 5 yrs <small class="sub">÷ 250 hrs</small></td><td class="num"><span data-o="mk.iF5">—</span></td><td class="num"><span data-o="mk.iA5">—</span></td><td class="num"><span data-o="mk.iF5">—</span></td></tr>
+          <tr><td>Initiation · over 10 yrs <small class="sub">÷ 500 hrs</small></td><td class="num"><span data-o="mk.iF10">—</span></td><td class="num"><span data-o="mk.iA10">—</span></td><td class="num"><span data-o="mk.iF10">—</span></td></tr>
+        </tbody>
+      </table>
+      <div class="mkt-h">3 · All-in average $/hr = wet + dues + initiation</div>
+      <table class="cmp mkt" style="box-shadow:none;font-size:15px">
+        <thead><tr><th>Horizon</th><th class="b">Plan B<br><small>Full</small></th><th class="b">Plan B<br><small>Associate</small></th><th class="c">Plan C<br><small>Full</small></th></tr></thead>
+        <tbody>
+          <tr class="grp"><td colspan="4">C172 <small>· market wet $150–175</small></td></tr>
+          <tr class="ai"><td>2-yr all-in</td><td class="num"><span data-o="mk.c172.BF2">—</span></td><td class="num"><span data-o="mk.c172.BA2">—</span></td><td class="num"><span data-o="mk.c172.CF2">—</span></td></tr>
+          <tr class="ai"><td>5-yr all-in</td><td class="num"><span data-o="mk.c172.BF5">—</span></td><td class="num"><span data-o="mk.c172.BA5">—</span></td><td class="num"><span data-o="mk.c172.CF5">—</span></td></tr>
+          <tr class="ai y10"><td>10-yr all-in</td><td class="num"><span data-o="mk.c172.BF10">—</span></td><td class="num"><span data-o="mk.c172.BA10">—</span></td><td class="num"><span data-o="mk.c172.CF10">—</span></td></tr>
+          <tr class="grp"><td colspan="4">C182 <small>· market wet $253–260</small></td></tr>
+          <tr class="ai"><td>2-yr all-in</td><td class="num"><span data-o="mk.c182.BF2">—</span></td><td class="num na" title="Associate members do not fly the 182">n/a</td><td class="num"><span data-o="mk.c182.CF2">—</span></td></tr>
+          <tr class="ai"><td>5-yr all-in</td><td class="num"><span data-o="mk.c182.BF5">—</span></td><td class="num na" title="Associate members do not fly the 182">n/a</td><td class="num"><span data-o="mk.c182.CF5">—</span></td></tr>
+          <tr class="ai y10"><td>10-yr all-in</td><td class="num"><span data-o="mk.c182.BF10">—</span></td><td class="num na" title="Associate members do not fly the 182">n/a</td><td class="num"><span data-o="mk.c182.CF10">—</span></td></tr>
+          <tr class="grp"><td colspan="4">Cherokee 235 <small>· market wet $276</small></td></tr>
+          <tr class="ai"><td>2-yr all-in</td><td class="num"><span data-o="mk.p235.BF2">—</span></td><td class="num"><span data-o="mk.p235.BA2">—</span></td><td class="num"><span data-o="mk.p235.CF2">—</span></td></tr>
+          <tr class="ai"><td>5-yr all-in</td><td class="num"><span data-o="mk.p235.BF5">—</span></td><td class="num"><span data-o="mk.p235.BA5">—</span></td><td class="num"><span data-o="mk.p235.CF5">—</span></td></tr>
+          <tr class="ai y10"><td>10-yr all-in</td><td class="num"><span data-o="mk.p235.BF10">—</span></td><td class="num"><span data-o="mk.p235.BA10">—</span></td><td class="num"><span data-o="mk.p235.CF10">—</span></td></tr>
+        </tbody>
+      </table>
+      <p class="mkt-sum"><b>Club all-in range vs market wet</b> (all columns, 2–10 yrs): <span data-o="mk.sum">—</span></p>
+      <p class="note mkt-note">All-in $/hr = wet + monthly dues × 12 ÷ 50 + initiation ÷ (50 × years). Market comps are wet rental rates only (Ad Hoc deck); renters pay no dues or join fee, but also get no ownership share, scheduling priority or vote. The club's per-hour cost falls for members who fly more than 50 hrs/yr and rises for those who fly less. Associates are Plan B only and do not fly the C182; Plan C has no associate members. Associates pay the same monthly dues as full members.</p>
     </div>
   </div>
   <div class="timeline">
@@ -560,15 +596,27 @@ footer b{color:#fff;font-family:Sora}
     out.fullMembers=String(st.fullMembers);out.fullMembersC=String(st.fullMembersC);out['C.toTxt']=st.fullTo+' full turnover'+(st.fullTo===1?'':'s')+' / yr';out['C.toShort']=st.fullTo+'/yr';out['B.fullTotal']=String(st.fullMembers+FIX.B.newMembers);out.avgAssoc=String(st.avgAssoc);
     out.assocTxt=st.avgAssoc?('+'+st.avgAssoc+' associate (avg)'):'no associates';
     out.fullInit=usd(st.fullInit);out.assocInit=usd(st.assocInit);
-    // Market context: all-in effective $/hr (wet + dues + amortized initiation)
-    var HRS=30,YRS=5,WET={B:{c172:110,c182:155,p235:155},C:{c172:120,c182:165,p235:165}};
-    var dB=st.duesB*12/HRS,dC=st.duesC*12/HRS,iF=st.fullInit/(HRS*YRS),iA=st.assocInit/(HRS*YRS),MK={};
+    // Market context: all-in average $/hr at 50 hrs/yr (wet + dues load + initiation amortized over 2/5/10 yrs)
+    var HRS=50,YRS=[2,5,10],WET={B:{c172:110,c182:155,p235:155},C:{c172:120,c182:165,p235:165}};
+    var dB=st.duesB*12/HRS,dC=st.duesC*12/HRS,MK={hrs:HRS,dB:dB,dC:dC};
+    out['mk.dB']=usdc(dB);out['mk.dC']=usdc(dC);out['mk.duesBm']=usd(st.duesB);out['mk.duesCm']=usd(st.duesC);
+    YRS.forEach(function(y){var iF=st.fullInit/(HRS*y),iA=st.assocInit/(HRS*y);MK['iF'+y]=iF;MK['iA'+y]=iA;out['mk.iF'+y]=usdc(iF);out['mk.iA'+y]=usdc(iA)});
     ['c172','c182','p235'].forEach(function(a){
-      var m={wB:WET.B[a],wC:WET.C[a],BF:WET.B[a]+dB+iF,BA:a==='c182'?null:WET.B[a]+dB+iA,CF:WET.C[a]+dC+iF};MK[a]=m;
+      var m={wB:WET.B[a],wC:WET.C[a]};
       out['mk.'+a+'.wB']=usd(m.wB);out['mk.'+a+'.wC']=usd(m.wC);
-      out['mk.'+a+'.BF']=usd(m.BF);out['mk.'+a+'.CF']=usd(m.CF);out['mk.'+a+'.BA']=m.BA===null?'n/a':usd(m.BA);
+      YRS.forEach(function(y){
+        m['BF'+y]=m.wB+dB+MK['iF'+y];m['CF'+y]=m.wC+dC+MK['iF'+y];m['BA'+y]=a==='c182'?null:m.wB+dB+MK['iA'+y];
+        out['mk.'+a+'.BF'+y]=usd(m['BF'+y]);out['mk.'+a+'.CF'+y]=usd(m['CF'+y]);out['mk.'+a+'.BA'+y]=m['BA'+y]===null?'n/a':usd(m['BA'+y]);
+      });
+      MK[a]=m;
     });
-    out['mk.hrs']=String(HRS);out['mk.yrs']=String(YRS);out['mk.dB']=usd(dB);out['mk.dC']=usd(dC);out['mk.iF']=usd(iF);out['mk.iA']=usd(iA);
+    var MKT={c172:[150,175,'C172'],c182:[253,260,'C182'],p235:[276,276,'235']};
+    out['mk.sum']=['c172','c182','p235'].map(function(a){
+      var v=[],m=MK[a];YRS.forEach(function(y){v.push(m['BF'+y],m['CF'+y]);if(m['BA'+y]!==null)v.push(m['BA'+y])});
+      var lo=Math.min.apply(null,v),hi=Math.max.apply(null,v),k=MKT[a],w;
+      w=hi<k[0]?'below market':lo>k[1]?'above market':(lo>=k[0]&&hi<=k[1])?'within market':lo<k[0]&&hi>k[1]?'spans market':lo<k[0]?'below to within market':'within to above market';
+      return k[2]+' club '+usd(lo)+'–'+usd(hi)+' vs '+(k[0]===k[1]?usd(k[0]):usd(k[0])+'–'+usd(k[1]))+' ('+w+')';
+    }).join(' · ')+'.';
     return {R:R,out:out,MK:MK};
   }
   function render(){
