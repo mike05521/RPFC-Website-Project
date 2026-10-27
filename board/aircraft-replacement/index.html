@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0b1f33;--navy:#0a2540;--blue:#0b6bcb;--blue-dark:#0a52a0;--sky:#eaf3fe;--sky2:#dcecfd;--mist:#f5f9ff;--paper:#fff;--line:#dbe7f4;--muted:#5b6b7c;--sun:#ff7a33;--sun-dark:#f2620f;--r:18px;--sh:0 18px 50px -20px rgba(11,37,64,.28);--teal:#14a38b}
+:root{--teal2:#7fd1c2;--ink:#0b1f33;--navy:#0a2540;--blue:#0b6bcb;--blue-dark:#0a52a0;--sky:#eaf3fe;--sky2:#dcecfd;--mist:#f5f9ff;--paper:#fff;--line:#dbe7f4;--muted:#5b6b7c;--sun:#ff7a33;--sun-dark:#f2620f;--r:18px;--sh:0 18px 50px -20px rgba(11,37,64,.28);--teal:#14a38b}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{margin:0;font-family:"Instrument Sans",system-ui,sans-serif;color:var(--ink);background:var(--mist);line-height:1.55;font-size:17px}
 h1,h2,h3,h4,.sora{font-family:Sora,system-ui,sans-serif;letter-spacing:-.02em;margin:0}
@@ -101,7 +101,7 @@ table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--
 @media(max-width:600px){.bar{grid-template-columns:1fr 80px}.bt{grid-column:1/-1;order:3}}
 .stack{position:relative;display:flex;height:46px;border-radius:12px;overflow:visible;margin:18px 0 34px}
 .seg{display:flex;align-items:center;padding:0 12px;color:#fff;font-family:Sora;font-weight:600;font-size:13px;white-space:nowrap;overflow:hidden}
-.seg.asset{background:var(--teal);border-radius:12px 0 0 12px}.seg.b{background:var(--blue);border-radius:0 12px 12px 0}.seg.c{background:var(--navy);border-radius:0 12px 12px 0}
+.seg.asset{background:var(--teal);border-radius:12px 0 0 12px}.seg.sale{background:var(--teal2);color:#0a2540}.seg.b{background:var(--blue);border-radius:0 12px 12px 0}.seg.c{background:var(--navy);border-radius:0 12px 12px 0}
 .goal{position:absolute;top:-8px;bottom:-8px;border-left:3px dashed var(--sun);}
 .goal em{position:absolute;top:100%;left:-36px;font-style:normal;font-family:Sora;font-weight:700;font-size:12px;color:var(--sun-dark);white-space:nowrap;margin-top:4px}
 .tot-line{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);padding-top:16px;margin-top:10px}
@@ -195,28 +195,28 @@ footer b{color:#fff;font-family:Sora}
 <section class="slide" id="goal"><div class="wrap">
   <div class="eyebrow">01 · The goal &amp; why</div>
   <h2>Replace the Cherokee 235 with a new, MOSAIC-era aircraft</h2>
-  <p class="lead">Sell the 235, pool what we already hold for aircraft replacement, and close the remaining gap over five years — without touching the 235 engine reserves.</p>
+  <p class="lead">Keep flying the 235 for five years, build on the replacement fund we already hold, and sell the 235 in year 5 to close out the $400k — without touching the 235 engine reserves.</p>
   <div class="grid g4">
     <div class="card stat"><div class="n">$400,000</div><div class="l">Replacement target</div></div>
-    <div class="card stat blue"><div class="n">$141,829</div><div class="l">Assets available today<br>(235 sale ~$130k + replacement fund $11,829.25)</div></div>
-    <div class="card stat accent"><div class="n">$258,171</div><div class="l">Gap to fund over 5 years</div></div>
+    <div class="card stat blue"><div class="n">$11,829</div><div class="l">Cash on hand today<br>(replacement fund $11,829.25)</div></div>
+    <div class="card stat accent"><div class="n">$258,171</div><div class="l">To raise over 5 years<br>(after ~$130k 235 sale in year 5)</div></div>
     <div class="card stat"><div class="n"><span data-o="fullMembers">30</span> · 1,000</div><div class="l">Current full members · flying hours / yr assumption</div></div>
   </div>
   <div class="card why" style="margin-top:22px">
     <h3 style="color:var(--navy);font-size:20px;margin-bottom:8px">Why now</h3>
     <ul style="margin:0;padding-left:20px">
-      <li><b>Engine at TBO before the goal.</b> The 235 is at <b>1,984 of 2,000 hrs</b>, with an overhaul est. at <b>~$60k around Q4 2027</b>. Because the replacement goal is 5 years out, the club will have to fund that overhaul itself (from engine reserves) before the new aircraft arrives.</li>
+      <li><b>Engine at TBO before the goal.</b> The 235 is at <b>1,984 of 2,000 hrs</b>, with an overhaul est. at <b>~$60k around Q4 2027</b>. We keep flying the 235 until we sell it in year 5, so the club will fund that overhaul itself (from engine reserves) well before the new aircraft arrives.</li>
       <li><b>More aircraft to choose from.</b> FAA MOSAIC rules broaden the field of aircraft the club can consider.</li>
       <li><b>Gradual, not sudden.</b> A defined 5-year runway lets dues and rates change gradually rather than through a one-time member assessment.</li>
       <li><b>Members prefer the other planes.</b> The 235 is currently the least desirable plane for the majority of members, so replacing it puts club money behind an aircraft members actually want to fly.</li>
     </ul>
   </div>
   <div class="timeline">
-    <div><b>Today</b>$141.8k in hand (incl. 235 sale)</div>
+    <div><b>Today</b>$11.8k replacement fund in hand</div>
     <div><b>Year 1–2</b>New dues &amp; rates take effect</div>
     <div><b>~Q4 2027</b>235 engine hits TBO (reserves cover)</div>
     <div><b>Year 3–4</b>Fund builds toward target</div>
-    <div><b>Year 5</b>≈ $400k available</div>
+    <div><b>Year 5</b>Sell the 235 (~$130k) → ≈ $400k available</div>
   </div>
 </div></section>
 
@@ -239,7 +239,7 @@ footer b{color:#fff;font-family:Sora}
       <div class="ctl"><label>Plan C monthly dues<small>$225–$260 · today $235</small></label><div class="stp" data-key="duesC" data-min="225" data-max="260" data-step="5" data-def="255" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$255</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
     </div>
     <div class="wsum"><span class="b">Plan B potential: <b data-o="B.potential">—</b> · <b data-o="B.surplusTxt">—</b></span><span class="c">Plan C potential: <b data-o="C.potential">—</b> · <b data-o="C.surplusTxt">—</b></span></div>
-    <p class="note" style="margin-top:10px">Fixed in the model: assets $141,829.25 · goal $400,000 · today’s dues $235 · Plan B adds 5 new full members · hourly +$50k (B) / +$100k (C) · excessive-hour fee $26,250 (B) / $30,000 (C) · operating transfer $50k (all 5-yr totals). Driven by the steppers: dues increase and $10/mo upgrade-reserve reallocation scale with each plan’s own full-member count (Plan B full members / Plan C full members); turnover initiations use the per-year counts × 5 yrs. <b>Associate members apply to Plan B only</b> — Plan C does not admit associates, so avg associates, associate turnover and associate initiation never change Plan C (associate dues = avg associates × Plan B dues × 60 months).</p>
+    <p class="note" style="margin-top:10px">Fixed in the model: cash on hand $11,829.25 (replacement fund) + 235 sale ~$130,000 in year 5 = $141,829.25 starting assets · goal $400,000 · today’s dues $235 · Plan B adds 5 new full members · hourly +$50k (B) / +$100k (C) · excessive-hour fee $26,250 (B) / $30,000 (C) · operating transfer $50k (all 5-yr totals). Driven by the steppers: dues increase and $10/mo upgrade-reserve reallocation scale with each plan’s own full-member count (Plan B full members / Plan C full members); turnover initiations use the per-year counts × 5 yrs. <b>Associate members apply to Plan B only</b> — Plan C does not admit associates, so avg associates, associate turnover and associate initiation never change Plan C (associate dues = avg associates × Plan B dues × 60 months).</p>
   </div>
   <div class="grid g2">
     <div class="card plan b">
@@ -321,12 +321,12 @@ footer b{color:#fff;font-family:Sora}
 <section class="slide" id="funding"><div class="wrap">
   <div class="eyebrow">03 · How we get to $400k</div>
   <h2>Where the money comes from</h2>
-  <p class="lead">Each plan starts with $141,829 in assets and raises the remaining $258,171 gap from these levers over five years.</p>
-  <div class="legend"><span><i style="background:var(--teal)"></i>Assets today</span><span><i style="background:var(--blue)"></i>Plan B raised</span><span><i style="background:var(--navy)"></i>Plan C raised</span><span><i style="background:var(--sun)"></i>$400k goal line</span></div>
+  <p class="lead">Each plan starts with the $11,829 replacement fund on hand, counts the ~$130k 235 sale in year 5, and raises the remaining $258,171 from these levers over five years.</p>
+  <div class="legend"><span><i style="background:var(--teal)"></i>Fund on hand today</span><span><i style="background:var(--teal2)"></i>235 sale (year 5)</span><span><i style="background:var(--blue)"></i>Plan B raised</span><span><i style="background:var(--navy)"></i>Plan C raised</span><span><i style="background:var(--sun)"></i>$400k goal line</span></div>
   <div class="grid g2" style="margin-top:18px">
     <div class="card">
       <h3 style="color:var(--blue);font-size:22px">Plan B · 5-year levers</h3>
-      <div class="stack"><div class="seg asset" data-w="B.assetPct" title="Assets today $141,829"><span>Assets today</span></div><div class="seg b" data-w="B.raisedPct" title="Raised over 5 yrs"><span>Raised over 5 years</span></div><div class="goal" data-l="B.goalPct"><em>$400k goal</em></div></div>
+      <div class="stack"><div class="seg asset" data-w="B.assetPct" title="Replacement fund on hand today $11,829"><span>Fund</span></div><div class="seg sale" data-w="B.salePct" title="235 sale in year 5 ~$130,000"><span>235 sale (yr 5)</span></div><div class="seg b" data-w="B.raisedPct" title="Raised over 5 yrs"><span>Raised over 5 years</span></div><div class="goal" data-l="B.goalPct"><em>$400k goal</em></div></div>
 <div class="bar"><div class="bl">New-member dues (+5)</div><div class="bt"><div class="bf b" data-w="B.newDuesPct"></div></div><div class="bv" data-o="B.newDues">$0</div></div>
 <div class="bar"><div class="bl">Hourly rate +$10</div><div class="bt"><div class="bf b" data-w="B.hourlyPct"></div></div><div class="bv" data-o="B.hourly">$0</div></div>
 <div class="bar"><div class="bl">Operating transfer $10k/yr</div><div class="bt"><div class="bf b" data-w="B.opTransferPct"></div></div><div class="bv" data-o="B.opTransfer">$0</div></div>
@@ -336,11 +336,11 @@ footer b{color:#fff;font-family:Sora}
 <div class="bar"><div class="bl">Reallocate upgrade reserves</div><div class="bt"><div class="bf b" data-w="B.upgradePct"></div></div><div class="bv" data-o="B.upgrade">$0</div></div>
 <div class="bar"><div class="bl">Associate dues (<span data-o="avgAssoc">5</span> avg)</div><div class="bt"><div class="bf b" data-w="B.assocDuesPct"></div></div><div class="bv" data-o="B.assocDues">$0</div></div>
 <div class="bar"><div class="bl">New-member initiations</div><div class="bt"><div class="bf b" data-w="B.newInitPct"></div></div><div class="bv" data-o="B.newInit">$0</div></div>
-      <div class="tot-line"><div><span style="color:var(--muted)">Assets + raised</span><div class="n" data-o="B.potential">$407,579</div></div><span class="surplus" data-o="B.surplusTxt" data-s="B">+$7,579 over goal</span></div>
+      <div class="tot-line"><div><span style="color:var(--muted)">Fund + 235 sale + raised</span><div class="n" data-o="B.potential">$407,579</div></div><span class="surplus" data-o="B.surplusTxt" data-s="B">+$7,579 over goal</span></div>
     </div>
     <div class="card">
       <h3 style="color:var(--navy);font-size:22px">Plan C · 5-year levers</h3>
-      <div class="stack"><div class="seg asset" data-w="C.assetPct" title="Assets today $141,829"><span>Assets today</span></div><div class="seg c" data-w="C.raisedPct" title="Raised over 5 yrs"><span>Raised over 5 years</span></div><div class="goal" data-l="C.goalPct"><em>$400k goal</em></div></div>
+      <div class="stack"><div class="seg asset" data-w="C.assetPct" title="Replacement fund on hand today $11,829"><span>Fund</span></div><div class="seg sale" data-w="C.salePct" title="235 sale in year 5 ~$130,000"><span>235 sale (yr 5)</span></div><div class="seg c" data-w="C.raisedPct" title="Raised over 5 yrs"><span>Raised over 5 years</span></div><div class="goal" data-l="C.goalPct"><em>$400k goal</em></div></div>
 <div class="bar"><div class="bl">Hourly rate +$20</div><div class="bt"><div class="bf c" data-w="C.hourlyPct"></div></div><div class="bv" data-o="C.hourly">$0</div></div>
 <div class="bar"><div class="bl">Operating transfer $10k/yr</div><div class="bt"><div class="bf c" data-w="C.opTransferPct"></div></div><div class="bv" data-o="C.opTransfer">$0</div></div>
 <div class="bar"><div class="bl">Dues increase <span data-o="C.duesDelta">+$20</span></div><div class="bt"><div class="bf c" data-w="C.duesIncPct"></div></div><div class="bv" data-o="C.duesInc">$0</div></div>
@@ -349,7 +349,7 @@ footer b{color:#fff;font-family:Sora}
 <div class="bar"><div class="bl">Reallocate upgrade reserves</div><div class="bt"><div class="bf c" data-w="C.upgradePct"></div></div><div class="bv" data-o="C.upgrade">$0</div></div>
 <div class="bar"><div class="bl">Associate dues (not offered in Plan C)</div><div class="bt"><div class="bf c" style="width:0%"></div></div><div class="bv">$0</div></div>
 <div class="bar"><div class="bl">New-member dues / initiations</div><div class="bt"><div class="bf c" data-w="C.newBothPct"></div></div><div class="bv" data-o="C.newBoth">$0</div></div>
-      <div class="tot-line"><div><span style="color:var(--muted)">Assets + raised</span><div class="n" data-o="C.potential">$405,829</div></div><span class="surplus" data-o="C.surplusTxt" data-s="C">+$5,829 over goal</span></div>
+      <div class="tot-line"><div><span style="color:var(--muted)">Fund + 235 sale + raised</span><div class="n" data-o="C.potential">$405,829</div></div><span class="surplus" data-o="C.surplusTxt" data-s="C">+$5,829 over goal</span></div>
     </div>
   </div>
   <div style="margin-top:26px">
@@ -366,7 +366,8 @@ footer b{color:#fff;font-family:Sora}
       <tr><td>Associate dues (<span data-o="avgAssoc">5</span> avg members · Plan B only)</td><td class="num" data-o="B.assocDues">$0</td><td class="num" title="Plan C does not admit associate members">$0 <small>(n/a)</small></td></tr>
       <tr><td>Operating transfer ($10k/yr)</td><td class="num" data-o="B.opTransfer">$0</td><td class="num" data-o="C.opTransfer">$0</td></tr>
       <tr class="tot"><td>Total raised</td><td class="num" data-o="B.raised">$0</td><td class="num" data-o="C.raised">$0</td></tr>
-      <tr class="tot"><td>+ Assets today</td><td class="num">$141,829.25</td><td class="num">$141,829.25</td></tr>
+      <tr class="tot"><td>+ Replacement fund on hand today</td><td class="num">$11,829.25</td><td class="num">$11,829.25</td></tr>
+      <tr class="tot"><td>+ 235 sale (year 5, est.)</td><td class="num">$130,000.00</td><td class="num">$130,000.00</td></tr>
       <tr class="tot"><td>Potential budget after 5 yrs</td><td class="num" data-o="B.potentialC">$0</td><td class="num" data-o="C.potentialC">$0</td></tr>
       <tr class="tot"><td>Surplus / (shortfall) vs $400k</td><td class="num" data-o="B.surplusC">$0</td><td class="num" data-o="C.surplusC">$0</td></tr>
     </tbody>
@@ -430,7 +431,7 @@ footer b{color:#fff;font-family:Sora}
   <h2>Common to both plans</h2>
   <p class="lead">Whichever path the board picks, these assumptions don’t change.</p>
   <div class="grid g4 same">
-    <div class="card"><div class="ic">✈️</div><h3>Sell the 235</h3><p>~$130k sale is part of the $141,829 asset stack in both plans.</p></div>
+    <div class="card"><div class="ic">✈️</div><h3>Sell the 235 in year 5</h3><p>We keep flying the 235 until year 5; the ~$130k sale lands then and counts toward the $400k in both plans — it is not cash today.</p></div>
     <div class="card warn"><div class="ic">🔧</div><h3>Engine reserves kept</h3><p>235 engine at 1,984 / 2,000 hrs; ~$60k overhaul ~Q4 2027 — likely before the goal is reached. Reserves are <b>not</b> used for the plane.</p></div>
     <div class="card"><div class="ic">📡</div><h3>172 GTN proceeds</h3><p>The planned GTN upgrade still happens; the $10/mo upgrade reserve is then redirected — ending future upgrades.</p></div>
     <div class="card"><div class="ic">📅</div><h3>5-year horizon</h3><p>$10k/yr operating transfer, 1,000 flying hours/yr, initiation fees (see What-if controls) go to replacement.</p></div>
@@ -452,7 +453,7 @@ footer b{color:#fff;font-family:Sora}
     <div class="card"><h3>How price-sensitive are current members?</h3><p>Would +$20 dues and +$20/hr (Plan C) push turnover above 4/yr or reduce hours flown?</p></div>
     <div class="card"><h3>Is 1,000 hrs/yr a safe assumption?</h3><p>Hourly increases are $50k (B) and $100k (C) of the raise. Run a 850-hr downside case.</p></div>
     <div class="card"><h3>Which aircraft, at what price?</h3><p>Confirm the $400k target against MOSAIC-era candidates, plus avionics, insurance and tax.</p></div>
-    <div class="card"><h3>Timing of the 235 sale &amp; engine</h3><p>Sell before or after TBO? An overhaul (~$60k) vs. selling as-is changes the ~$130k assumption.</p></div>
+    <div class="card"><h3>235 sale value in year 5</h3><p>The plan sells the 235 in year 5, after the ~$60k overhaul (~Q4 2027). Is ~$130k realistic for a freshly overhauled 235 five years out?</p></div>
     <div class="card"><h3>Hybrid option?</h3><p>e.g. moderate growth (+2–3 members) with +$15 increases, or a fallback trigger if recruiting lags.</p></div>
   </div>
   <div class="steps">
@@ -546,7 +547,7 @@ footer b{color:#fff;font-family:Sora}
 </script>
 <script>
 (function(){
-  var ASSETS=141829.25,GOAL=400000,BASE=235,UPG=10;
+  var FUND_TODAY=11829.25,SALE_235_Y5=130000,ASSETS=FUND_TODAY+SALE_235_Y5,GOAL=400000,BASE=235,UPG=10;
   var FIX={B:{newMembers:5,hourly:50000,excessive:26250,opTransfer:50000},
            C:{newMembers:0,hourly:100000,excessive:30000,opTransfer:50000}};
   var steppers=[].slice.call(document.querySelectorAll('.stp[data-key]'));
@@ -587,7 +588,7 @@ footer b{color:#fff;font-family:Sora}
       out[p+'.surplusTxt']=s>=0?'+'+usd(s)+' over goal':usd(-s)+' short of goal';
       out[p+'.surplusShort']=s>=0?'surplus ≈ '+usd(s):'shortfall ≈ '+usd(-s);
       var tot=Math.max(o.potentialRaw,GOAL);
-      out[p+'.assetPct']=ASSETS/tot*100;out[p+'.raisedPct']=Math.max(0,o.raised)/tot*100;out[p+'.goalPct']=Math.min(GOAL/tot*100,99.6);
+      out[p+'.assetPct']=FUND_TODAY/tot*100;out[p+'.salePct']=SALE_235_Y5/tot*100;out[p+'.raisedPct']=Math.max(0,o.raised)/tot*100;out[p+'.goalPct']=Math.min(GOAL/tot*100,99.6);
       out[p+'.neg']=s<0;
       var nm=o.newDues+o.newInit,ci=Math.max(0,o.duesInc)+o.hourly;
       out[p+'.newMemTotal']=usd(nm);out[p+'.newMemPct']=(o.raised>0?Math.round(nm/o.raised*100):0)+'%';
