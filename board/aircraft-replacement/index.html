@@ -204,7 +204,7 @@ footer b{color:#fff;font-family:Sora}
     <div class="card stat"><div class="n">$400,000</div><div class="l">Replacement target</div></div>
     <div class="card stat blue"><div class="n">$11,829</div><div class="l">Cash on hand today<br>(replacement fund $11,829.25)</div></div>
     <div class="card stat accent"><div class="n">$258,171</div><div class="l">To raise over 5 years<br>(after ~$130k 235 sale in year 5)</div></div>
-    <div class="card stat"><div class="n"><span data-o="fullMembers">30</span> · 1,000</div><div class="l">Current full members · flying hours / yr assumption</div></div>
+    <div class="card stat"><div class="n"><span data-o="avgHrs">27</span> hrs</div><div class="l">Avg per pilot / yr (2026 Flight Log) · <span data-o="fullMembers">30</span> full members ≈ <span data-o="curClubHrs">810</span> club hrs / yr</div></div>
   </div>
   <div class="card why" style="margin-top:22px">
     <h3 style="color:var(--navy);font-size:20px;margin-bottom:8px">Why now</h3>
@@ -235,6 +235,7 @@ footer b{color:#fff;font-family:Sora}
       <div class="ctl-col sh"><div class="ctl-h">Shared<small>Both plans</small></div>
         <div class="ctl"><label>Full-member turnover initiations / yr<small>both plans · 1–10</small></label><div class="stp" data-key="fullTo" data-min="1" data-max="10" data-step="1" data-def="3" data-fmt="n"><button type="button" class="dn" aria-label="Decrease">−</button><output>3</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
         <div class="ctl"><label>Full member initiation<small>$500–$3,500</small></label><div class="stp" data-key="fullInit" data-min="500" data-max="3500" data-step="500" data-def="3000" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$3,000</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
+        <div class="ctl"><label>Avg flying hrs / pilot / yr<small>both plans · 15–50 · 2026 Flight Log ≈ 27 · club hrs: B <b data-o="B.clubHrs">945</b> · C <b data-o="C.clubHrs">810</b></small></label><div class="stp" data-key="avgHrs" data-min="15" data-max="50" data-step="1" data-def="27" data-fmt="n"><button type="button" class="dn" aria-label="Decrease">−</button><output>27</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
       </div>
       <div class="ctl-col b"><div class="ctl-h">Plan B<small>Grow to 35 · associates</small></div>
         <div class="ctl"><label>Plan B full members (current)<small>Plan B · 20–40 · grows by +5</small></label><div class="stp" data-key="fullMembers" data-min="20" data-max="40" data-step="1" data-def="30" data-fmt="n"><button type="button" class="dn" aria-label="Decrease">−</button><output>30</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
@@ -249,7 +250,7 @@ footer b{color:#fff;font-family:Sora}
       </div>
     </div>
     <div class="wsum"><span class="b">Plan B potential: <b data-o="B.potential">—</b> · <b data-o="B.surplusTxt">—</b></span><span class="c">Plan C potential: <b data-o="C.potential">—</b> · <b data-o="C.surplusTxt">—</b></span></div>
-    <p class="note" style="margin-top:10px">Fixed in the model: cash on hand $11,829.25 (replacement fund) + 235 sale ~$130,000 in year 5 = $141,829.25 starting assets · goal $400,000 · today’s dues $235 · Plan B adds 5 new full members · hourly +$50k (B) / +$100k (C) · excessive-hour fee $26,250 (B) / $30,000 (C) · operating transfer $50k (all 5-yr totals). Driven by the steppers: dues increase and $10/mo upgrade-reserve reallocation scale with each plan’s own full-member count (Plan B full members / Plan C full members); turnover initiations use the per-year counts × 5 yrs. <b>Associate members apply to Plan B only</b> — Plan C does not admit associates, so avg associates, associate turnover and associate initiation never change Plan C (associate dues = avg associates × Plan B dues × 60 months).</p>
+    <p class="note" style="margin-top:10px">Fixed in the model: cash on hand $11,829.25 (replacement fund) + 235 sale ~$130,000 in year 5 = $141,829.25 starting assets · goal $400,000 · today’s dues $235 · Plan B adds 5 new full members · excessive-hour fee $26,250 (B) / $30,000 (C) · operating transfer $50k (all 5-yr totals). Driven by the steppers: dues increase and $10/mo upgrade-reserve reallocation scale with each plan’s own full-member count (Plan B full members / Plan C full members); turnover initiations use the per-year counts × 5 yrs. <b>Hourly increase</b> = +$10/hr (B) or +$20/hr (C) × club hrs/yr × 5 yrs, where club hrs/yr = avg hrs per pilot × full members (Plan B uses its grown total, current + 5; Plan C its own count). The ≈27 hrs/pilot default is from the 2026 electronic Flight Log (~540 member hrs Mar 1–Oct 26, annualized ≈ 820 hrs/yr ÷ 30 full members), so club hours rise as members are added. <b>Associate members apply to Plan B only</b> — Plan C does not admit associates, so avg associates, associate turnover and associate initiation never change Plan C (associate dues = avg associates × Plan B dues × 60 months).</p>
   </div>
   <div class="grid g2">
     <div class="card plan b">
@@ -422,7 +423,7 @@ footer b{color:#fff;font-family:Sora}
       <h4 class="con">Cons</h4>
       <ul class="n">
         <li>Bigger increases for existing members (<span data-o="C.duesDelta">+$20</span> dues, +$20/hr)</li>
-        <li>$100k depends on hourly revenue — sensitive if members fly fewer than 1,000 hrs/yr</li>
+        <li><b data-o="C.hourly">$81,000</b> depends on hourly revenue — sensitive if members fly less than ≈<span data-o="avgHrs">27</span> hrs/yr each (<span data-o="C.clubHrs">810</span> club hrs/yr)</li>
         <li>Higher cost may itself drive turnover (assumes <span data-o="C.toShort">3/yr</span>)</li>
         <li>Cushion vs goal: <b data-o="C.surplusShort">surplus ≈ $5,829</b></li>
       </ul>
@@ -444,7 +445,7 @@ footer b{color:#fff;font-family:Sora}
     <div class="card"><div class="ic">✈️</div><h3>Sell the 235 in year 5</h3><p>We keep flying the 235 until year 5; the ~$130k sale lands then and counts toward the $400k in both plans — it is not cash today.</p></div>
     <div class="card warn"><div class="ic">🔧</div><h3>Engine reserves kept</h3><p>235 engine at 1,984 / 2,000 hrs; ~$60k overhaul ~Q4 2027 — likely before the goal is reached. Reserves are <b>not</b> used for the plane.</p></div>
     <div class="card"><div class="ic">📡</div><h3>172 GTN proceeds</h3><p>The planned GTN upgrade still happens; the $10/mo upgrade reserve is then redirected — ending future upgrades.</p></div>
-    <div class="card"><div class="ic">📅</div><h3>5-year horizon</h3><p>$10k/yr operating transfer, 1,000 flying hours/yr, initiation fees (see What-if controls) go to replacement.</p></div>
+    <div class="card"><div class="ic">📅</div><h3>5-year horizon</h3><p>$10k/yr operating transfer, ≈<span data-o="avgHrs">27</span> flying hrs per pilot / yr × full members (2026 Flight Log), initiation fees (see What-if controls) go to replacement.</p></div>
   </div>
   <div class="grid g2" style="margin-top:22px">
     <div class="card alt"><h3>Also on the sheet: Plan A</h3><p style="margin:0;color:var(--muted)">4-year plan that uses engine <i>and</i> upgrade cash toward the aircraft — faster, but leaves no engine reserve ahead of the 235’s TBO.</p></div>
@@ -461,7 +462,7 @@ footer b{color:#fff;font-family:Sora}
   <div class="grid g2 q">
     <div class="card"><h3>Can we realistically add 5 members?</h3><p>What is the waitlist / recruiting pipeline, and what happens to Plan B if we land only 2–3?</p></div>
     <div class="card"><h3>How price-sensitive are current members?</h3><p>Would +$20 dues and +$20/hr (Plan C) push turnover above 4/yr or reduce hours flown?</p></div>
-    <div class="card"><h3>Is 1,000 hrs/yr a safe assumption?</h3><p>Hourly increases are $50k (B) and $100k (C) of the raise. Run a 850-hr downside case.</p></div>
+    <div class="card"><h3>Is ≈27 hrs / pilot / yr a safe assumption?</h3><p>It is annualized from ~8 months of the 2026 electronic Flight Log. Hourly increases are <b data-o="B.hourly">$47,250</b> (B, <span data-o="B.clubHrs">945</span> club hrs/yr) and <b data-o="C.hourly">$81,000</b> (C, <span data-o="C.clubHrs">810</span> hrs/yr) of the raise. Use the avg-hrs stepper to run a downside case (e.g. 23 hrs).</p></div>
     <div class="card"><h3>Which aircraft, at what price?</h3><p>Confirm the $400k target against MOSAIC-era candidates, plus avionics, insurance and tax.</p></div>
     <div class="card"><h3>235 sale value in year 5</h3><p>The plan sells the 235 in year 5, after the ~$60k overhaul (~Q4 2027). Is ~$130k realistic for a freshly overhauled 235 five years out?</p></div>
     <div class="card"><h3>Hybrid option?</h3><p>e.g. moderate growth (+2–3 members) with +$15 increases, or a fallback trigger if recruiting lags.</p></div>
@@ -558,8 +559,10 @@ footer b{color:#fff;font-family:Sora}
 <script>
 (function(){
   var FUND_TODAY=11829.25,SALE_235_Y5=130000,ASSETS=FUND_TODAY+SALE_235_Y5,GOAL=400000,BASE=235,UPG=10;
-  var FIX={B:{newMembers:5,hourly:50000,excessive:26250,opTransfer:50000},
-           C:{newMembers:0,hourly:100000,excessive:30000,opTransfer:50000}};
+  // AVG_HRS_PER_PILOT: 2026 electronic Flight Log, ~540 member hrs Mar 1–Oct 26 annualized ≈ 820 hrs/yr ÷ 30 full members ≈ 27.4 → 27 (default of the avgHrs stepper)
+  var AVG_HRS_PER_PILOT=27;
+  var FIX={B:{newMembers:5,hourlyRaise:10,excessive:26250,opTransfer:50000},
+           C:{newMembers:0,hourlyRaise:20,excessive:30000,opTransfer:50000}};
   var steppers=[].slice.call(document.querySelectorAll('.stp[data-key]'));
   var st={};
   function usd(v){var neg=v<0;v=Math.abs(v);var s='$'+Math.round(v).toLocaleString('en-US');return neg?'−'+s:s}
@@ -577,7 +580,9 @@ footer b{color:#fff;font-family:Sora}
     o.newDues=f.newMembers*dues*12*5;
     o.newInit=f.newMembers*st.fullInit;
     o.turnover=isB?(st.fullTo*st.fullInit+st.assocTo*st.assocInit)*5:st.fullTo*st.fullInit*5;
-    o.hourly=f.hourly;o.excessive=f.excessive;o.opTransfer=f.opTransfer;
+    var avg=(st.avgHrs!=null?st.avgHrs:AVG_HRS_PER_PILOT);
+    o.clubHrs=avg*(full+f.newMembers); // club hrs/yr scale with full members (Plan B: current + 5 new)
+    o.hourly=f.hourlyRaise*o.clubHrs*5;o.excessive=f.excessive;o.opTransfer=f.opTransfer;
     o.newBoth=o.newDues+o.newInit;
     o.raised=o.duesInc+o.upgrade+o.assocDues+o.hourly+o.excessive+o.turnover+o.newInit+o.newDues+o.opTransfer;
     o.potentialRaw=ASSETS+o.raised;o.surplusRaw=o.potentialRaw-GOAL;
@@ -590,6 +595,7 @@ footer b{color:#fff;font-family:Sora}
       ['newDues','hourly','opTransfer','excessive','turnover','duesInc','upgrade','assocDues','newInit','newBoth'].forEach(function(x){if(o[x]>max)max=o[x]});
       ['newDues','hourly','opTransfer','excessive','turnover','duesInc','upgrade','assocDues','newInit','newBoth','raised'].forEach(function(x){out[p+'.'+x]=usd(o[x]);out[p+'.'+x+'Pct']=Math.max(0,o[x])/max*100});
       out[p+'.dues']=usd(o.dues);
+      out[p+'.clubHrs']=Math.round(o.clubHrs).toLocaleString('en-US');
       out[p+'.duesDelta']=sgn(o.dues-BASE);
       out[p+'.potential']=usd(o.potentialRaw);
       out[p+'.potentialC']=usdc(o.potentialRaw);
@@ -608,6 +614,7 @@ footer b{color:#fff;font-family:Sora}
     out.toTxt=st.assocTo?(st.fullTo+' full + '+st.assocTo+' assoc. turnovers / yr'):(st.fullTo+' turnover'+(st.fullTo===1?'':'s')+' / yr');
     out.toShort=st.assocTo?(st.fullTo+'+'+st.assocTo+'/yr'):(st.fullTo+'/yr');
     out.fullMembers=String(st.fullMembers);out.fullMembersC=String(st.fullMembersC);out['C.toTxt']=st.fullTo+' full turnover'+(st.fullTo===1?'':'s')+' / yr';out['C.toShort']=st.fullTo+'/yr';out['B.fullTotal']=String(st.fullMembers+FIX.B.newMembers);out.avgAssoc=String(st.avgAssoc);
+    out.avgHrs=String(st.avgHrs);out.curClubHrs=(st.avgHrs*st.fullMembers).toLocaleString('en-US');
     out.assocTxt=st.avgAssoc?('+'+st.avgAssoc+' associate (avg)'):'no associates';
     out.fullInit=usd(st.fullInit);out.assocInit=usd(st.assocInit);
     // Market context: all-in average $/hr at 50 hrs/yr (wet + dues load + initiation amortized over 2/5/10 yrs)
