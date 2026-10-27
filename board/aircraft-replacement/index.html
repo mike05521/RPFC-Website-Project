@@ -76,6 +76,14 @@ table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--
 .cmp td:first-child{color:var(--muted);font-weight:600;width:30%}
 .cmp td.num{font-family:Sora;font-weight:600;color:var(--navy)}
 .cmp tr:last-child td{border-bottom:0}
+.cmp.mkt th,.cmp.mkt td{padding:10px 8px}
+.cmp.mkt td.num{white-space:nowrap}
+@media(max-width:560px){.cmp.mkt{font-size:14px!important}.cmp.mkt th,.cmp.mkt td{padding:8px 5px}}
+.cmp.mkt thead th small{font-family:"Instrument Sans";font-weight:500;font-size:12px;opacity:.85}
+.cmp.mkt td.num small.wet{display:block;font-family:"Instrument Sans";font-weight:500;font-size:12px;color:var(--muted)}
+.cmp.mkt td.mk{color:var(--muted)}.cmp.mkt td.na{color:var(--muted);font-weight:500}
+.cmp.mkt td:first-child{width:auto}
+.mkt-note{margin-top:10px;font-size:13px}
 .cmp tr.tot td{background:var(--mist);font-weight:700}
 .cmp tr.tot td.num{font-size:19px}
 .up{color:var(--sun-dark);font-size:13px;font-weight:700;margin-left:6px;font-family:"Instrument Sans"}
@@ -199,16 +207,17 @@ footer b{color:#fff;font-family:Sora}
       </ul>
     </div>
     <div class="card">
-      <h3 style="color:var(--navy);font-size:20px;margin-bottom:8px">Market context</h3>
-      <p style="margin:0 0 10px;color:var(--muted)">Nearby rental comps (Ad Hoc deck) — the club stays well under market under either plan.</p>
-      <table class="cmp" style="box-shadow:none;font-size:15px">
-        <thead><tr><th>Aircraft</th><th>Market</th><th class="b">Plan B</th><th class="c">Plan C</th></tr></thead>
+      <h3 style="color:var(--navy);font-size:20px;margin-bottom:8px">Market context · all-in $/hr</h3>
+      <p style="margin:0 0 10px;color:var(--muted)">Club cost with dues and join fee loaded in, next to nearby wet rental comps (Ad Hoc deck). Updates live with the What-if steppers.</p>
+      <table class="cmp mkt" style="box-shadow:none;font-size:15px">
+        <thead><tr><th>Aircraft</th><th>Market</th><th class="b">Plan B<br><small>Full</small></th><th class="b">Plan B<br><small>Associate</small></th><th class="c">Plan C<br><small>Full</small></th></tr></thead>
         <tbody>
-          <tr><td>C172</td><td class="num">$150–175</td><td class="num">$110</td><td class="num">$120</td></tr>
-          <tr><td>C182</td><td class="num">$253–260</td><td class="num">$155</td><td class="num">$165</td></tr>
-          <tr><td>Cherokee 235</td><td class="num">$276</td><td class="num">$155</td><td class="num">$165</td></tr>
+          <tr><td>C172</td><td class="num mk">$150–175<small class="wet">wet only</small></td><td class="num"><span data-o="mk.c172.BF">—</span><small class="wet">wet <span data-o="mk.c172.wB">—</span></small></td><td class="num"><span data-o="mk.c172.BA">—</span><small class="wet">wet <span data-o="mk.c172.wB">—</span></small></td><td class="num"><span data-o="mk.c172.CF">—</span><small class="wet">wet <span data-o="mk.c172.wC">—</span></small></td></tr>
+          <tr><td>C182</td><td class="num mk">$253–260<small class="wet">wet only</small></td><td class="num"><span data-o="mk.c182.BF">—</span><small class="wet">wet <span data-o="mk.c182.wB">—</span></small></td><td class="num na" title="Associate members do not fly the 182">n/a<small class="wet">no 182</small></td><td class="num"><span data-o="mk.c182.CF">—</span><small class="wet">wet <span data-o="mk.c182.wC">—</span></small></td></tr>
+          <tr><td>Cherokee 235</td><td class="num mk">$276<small class="wet">wet only</small></td><td class="num"><span data-o="mk.p235.BF">—</span><small class="wet">wet <span data-o="mk.p235.wB">—</span></small></td><td class="num"><span data-o="mk.p235.BA">—</span><small class="wet">wet <span data-o="mk.p235.wB">—</span></small></td><td class="num"><span data-o="mk.p235.CF">—</span><small class="wet">wet <span data-o="mk.p235.wC">—</span></small></td></tr>
         </tbody>
       </table>
+      <p class="note mkt-note">All-in $/hr = wet rate + monthly dues × 12 ÷ <span data-o="mk.hrs">30</span> hrs + initiation ÷ (<span data-o="mk.hrs">30</span> hrs × <span data-o="mk.yrs">5</span> yrs). Assumes a typical member flies <b><span data-o="mk.hrs">30</span> hrs/yr</b> and spreads the join fee over the <span data-o="mk.yrs">5</span>-yr plan horizon. Plan B adds <span data-o="mk.dB">$0</span>/hr dues + <span data-o="mk.iF">$0</span>/hr full (<span data-o="mk.iA">$0</span>/hr associate) initiation; Plan C adds <span data-o="mk.dC">$0</span>/hr dues + <span data-o="mk.iF">$0</span>/hr initiation. Market rentals carry no initiation or club dues, so the all-in club figure is the fair compare. Plan C has no associate members.</p>
     </div>
   </div>
   <div class="timeline">
@@ -551,7 +560,16 @@ footer b{color:#fff;font-family:Sora}
     out.fullMembers=String(st.fullMembers);out.fullMembersC=String(st.fullMembersC);out['C.toTxt']=st.fullTo+' full turnover'+(st.fullTo===1?'':'s')+' / yr';out['C.toShort']=st.fullTo+'/yr';out['B.fullTotal']=String(st.fullMembers+FIX.B.newMembers);out.avgAssoc=String(st.avgAssoc);
     out.assocTxt=st.avgAssoc?('+'+st.avgAssoc+' associate (avg)'):'no associates';
     out.fullInit=usd(st.fullInit);out.assocInit=usd(st.assocInit);
-    return {R:R,out:out};
+    // Market context: all-in effective $/hr (wet + dues + amortized initiation)
+    var HRS=30,YRS=5,WET={B:{c172:110,c182:155,p235:155},C:{c172:120,c182:165,p235:165}};
+    var dB=st.duesB*12/HRS,dC=st.duesC*12/HRS,iF=st.fullInit/(HRS*YRS),iA=st.assocInit/(HRS*YRS),MK={};
+    ['c172','c182','p235'].forEach(function(a){
+      var m={wB:WET.B[a],wC:WET.C[a],BF:WET.B[a]+dB+iF,BA:a==='c182'?null:WET.B[a]+dB+iA,CF:WET.C[a]+dC+iF};MK[a]=m;
+      out['mk.'+a+'.wB']=usd(m.wB);out['mk.'+a+'.wC']=usd(m.wC);
+      out['mk.'+a+'.BF']=usd(m.BF);out['mk.'+a+'.CF']=usd(m.CF);out['mk.'+a+'.BA']=m.BA===null?'n/a':usd(m.BA);
+    });
+    out['mk.hrs']=String(HRS);out['mk.yrs']=String(YRS);out['mk.dB']=usd(dB);out['mk.dC']=usd(dC);out['mk.iF']=usd(iF);out['mk.iA']=usd(iA);
+    return {R:R,out:out,MK:MK};
   }
   function render(){
     var c=calc(),out=c.out;
@@ -564,7 +582,7 @@ footer b{color:#fff;font-family:Sora}
       s.querySelector('output').textContent=s.getAttribute('data-fmt')==='usd'?usd(v):String(v);
       s.querySelector('.dn').disabled=v<=mn;s.querySelector('.up').disabled=v>=mx;
     });
-    window.RPFC_MODEL=c.R;
+    window.RPFC_MODEL=c.R;window.RPFC_MKT=c.MK;
   }
   function reset(){steppers.forEach(function(s){st[s.getAttribute('data-key')]=+s.getAttribute('data-def')});render()}
   steppers.forEach(function(s){
