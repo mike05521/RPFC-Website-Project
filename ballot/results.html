@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2027 Election Results (Board) | Riverside Pilots Flying Club</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0b6bcb" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b6bcb'/%3E%3Cpath d='M50 18l7 22 22 7-22 7-7 22-7-22-22-7 22-7z' fill='white'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="ballot.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="../index.html">Riverside Pilots Flying Club</a>
+    </div>
+  </header>
+
+  <div class="hero-band">
+    <div class="wrap">
+      <p class="eyebrow">Board only · Unpublished</p>
+      <h1>2027 Election Results</h1>
+      <p class="lead">Aggregate vote tallies and turnout. Individual choices are never stored.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+      <section class="card" id="step-login">
+        <h2 style="font-size:1.35rem">Board password</h2>
+        <p class="lead">Set <code>RPFC_BOARD_ELECTION_PASSWORD</code> in the hosting environment (see README).</p>
+        <label class="field-label" for="board-password">Password</label>
+        <input id="board-password" type="password" autocomplete="current-password" />
+        <div class="actions">
+          <button type="button" class="btn btn-blue" id="btn-login">View results</button>
+          <a class="btn btn-ghost" href="index.html">Back to ballot</a>
+        </div>
+        <p id="login-msg" class="msg hidden" role="alert"></p>
+      </section>
+
+      <section class="card hidden" id="step-results">
+        <h2 style="font-size:1.35rem">Tallies</h2>
+        <p class="lead"><span id="total-ballots">0</span> ballot(s) cast · pick 7 of 8 seats</p>
+        <table class="results" aria-label="Candidate vote tallies">
+          <thead>
+            <tr>
+              <th>Candidate</th>
+              <th>Votes</th>
+            </tr>
+          </thead>
+          <tbody id="tally-body"></tbody>
+        </table>
+
+        <h3 style="margin-top:2rem;font-size:1.1rem">Members who voted</h3>
+        <p class="fine">Email addresses only — not how they voted.</p>
+        <div class="voter-list" id="voter-list"></div>
+
+        <div class="actions" style="margin-top:1.5rem">
+          <button type="button" class="btn btn-ghost" id="btn-logout">Lock results</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">Riverside Pilots Flying Club · Confidential board view</div>
+  </footer>
+
+  <script>
+    var SESSION_PW = "rpfc_2027_results_unlocked";
+
+    var stepLogin = document.getElementById("step-login");
+    var stepResults = document.getElementById("step-results");
+    var loginMsg = document.getElementById("login-msg");
+    var pwInput = document.getElementById("board-password");
+
+    function showMsg(text, kind) {
+      loginMsg.textContent = text;
+      loginMsg.className = "msg msg-" + kind;
+      loginMsg.classList.remove("hidden");
+    }
+
+    function renderResults(data) {
+      document.getElementById("total-ballots").textContent = String(data.totalBallots || 0);
+      var tbody = document.getElementById("tally-body");
+      tbody.innerHTML = "";
+      (data.tallies || []).forEach(function (row) {
+        var tr = document.createElement("tr");
+        tr.innerHTML = "<td>" + row.name + "</td><td>" + row.votes + "</td>";
+        tbody.appendChild(tr);
+      });
+      var list = document.getElementById("voter-list");
+      list.innerHTML = "";
+      (data.voters || []).forEach(function (v) {
+        var div = document.createElement("div");
+        div.textContent = v.email + " · " + (v.votedAt || "").replace("T", " ").replace(/\.\d+Z$/, " UTC");
+        list.appendChild(div);
+      });
+      stepLogin.classList.add("hidden");
+      stepResults.classList.remove("hidden");
+    }
+
+    async function loadResults(password) {
+      var res = await fetch("/api/election/results", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: password })
+      });
+      var data = await res.json();
+      if (!data.ok) {
+        if (data.error === "unauthorized") {
+          showMsg("Incorrect password.", "error");
+        } else {
+          showMsg("Could not load results.", "error");
+        }
+        return false;
+      }
+      sessionStorage.setItem(SESSION_PW, "1");
+      renderResults(data);
+      return true;
+    }
+
+    document.getElementById("btn-login").addEventListener("click", function () {
+      loginMsg.classList.add("hidden");
+      var pw = pwInput.value;
+      if (!pw) {
+        showMsg("Enter the board password.", "error");
+        return;
+      }
+      document.getElementById("btn-login").disabled = true;
+      loadResults(pw).finally(function () {
+        document.getElementById("btn-login").disabled = false;
+      });
+    });
+
+    pwInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") document.getElementById("btn-login").click();
+    });
+
+    document.getElementById("btn-logout").addEventListener("click", function () {
+      sessionStorage.removeItem(SESSION_PW);
+      pwInput.value = "";
+      stepResults.classList.add("hidden");
+      stepLogin.classList.remove("hidden");
+    });
+
+    if (sessionStorage.getItem(SESSION_PW) === "1") {
+      showMsg("Session unlocked — re-enter password to refresh tallies.", "info");
+    }
+  </script>
+</body>
+</html>
