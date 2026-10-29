@@ -167,8 +167,11 @@ footer b{color:#fff;font-family:Sora}
 .stp output{flex:1;text-align:center;font-family:Sora;font-weight:800;font-size:20px;color:var(--navy)}
 .ctl label small .dd{font-weight:700;color:var(--navy)}.ctl.b label small .dd{color:var(--blue-dark)}
 .ctl.b{border-color:#b9d4f3}.ctl.b label{color:var(--blue-dark)}
-.wsum{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-.wsum span{font-family:Sora;font-weight:700;font-size:14px;padding:7px 12px;border-radius:999px}
+.wsum{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px;align-items:stretch}
+@media(max-width:1200px){.wsum{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.wsum{grid-template-columns:1fr}.wsum .sp{display:none}}
+.wsum .sp{background:none!important;padding:0!important}
+.wsum span{font-family:Sora;font-weight:700;font-size:14px;padding:8px 12px;border-radius:14px;text-align:center}
 .wsum .b{background:var(--blue);color:#fff}.wsum .c{background:var(--navy);color:#fff}.wsum .a{background:var(--aco);color:#fff}
 .reset{font-family:Sora;font-weight:700;font-size:13px;background:#fff;border:1px solid var(--line);color:var(--blue-dark);padding:8px 14px;border-radius:999px;cursor:pointer}
 .reset:hover{background:var(--sky)}
@@ -271,7 +274,7 @@ footer b{color:#fff;font-family:Sora}
         <div class="ctl c"><label>Excessive-hour fee<small>Plan C · $/hr over limit · $0–$75 · × shared excess hrs × 5 = <b data-o="C.excessive"></b></small></label><div class="stp" data-key="excessC" data-min="0" data-max="75" data-step="5" data-def="50" data-fmt="usd"><button type="button" class="dn" aria-label="Decrease">−</button><output>$50</output><button type="button" class="up" aria-label="Increase">+</button></div></div>
       </div>
     </div>
-    <div class="wsum"><span class="a">Plan A potential: <b data-o="A.potential">—</b> · <b data-o="A.surplusTxt">—</b></span><span class="b">Plan B potential: <b data-o="B.potential">—</b> · <b data-o="B.surplusTxt">—</b></span><span class="c">Plan C potential: <b data-o="C.potential">—</b> · <b data-o="C.surplusTxt">—</b></span></div>
+    <div class="wsum"><span class="sp" aria-hidden="true"></span><span class="a">Plan A potential: <b data-o="A.potential">—</b> · <b data-o="A.surplusTxt">—</b></span><span class="b">Plan B potential: <b data-o="B.potential">—</b> · <b data-o="B.surplusTxt">—</b></span><span class="c">Plan C potential: <b data-o="C.potential">—</b> · <b data-o="C.surplusTxt">—</b></span></div>
     <p class="note" style="margin-top:10px"><b>Plan A (baseline)</b> = August 2026 rates (dues $165 + engine $55 + upgrade $10 = $230/mo; 172 $95, 182 $140, 235 $140/hr; fuel $5.89/gal; rates subject to change) with 30 full members and no changes: no dues or hourly amount to the new-plane fund, the upgrade reserve stays with upgrades, no excessive-hour fee increase and no operating transfer. Only the Shared steppers move Plan A (turnover initiations into the fund; avg hrs in the $/hr tables). Fixed in the model: cash on hand $11,829.25 (replacement fund) + 235 sale ~$130,000 in year 5 = $141,829.25 starting assets · goal $400,000 · today’s dues $235 · Plan B full member cap <span data-o="B.fullTotal">30</span> · operating transfer $50k (all 5-yr totals). Driven by the steppers: hourly new-plane-fund rate (auto = dues − $235, × club hrs × 5) and excessive-hour fee (× ~150 excess hrs/yr × 5) per plan, dues increase and $10/mo upgrade-reserve reallocation scale with each plan’s own full-member count (Plan B full members / Plan C full members); turnover initiations use the per-year counts × 5 yrs. <b>Hourly increase</b> = (plan dues − $235) per hr × club hrs/yr × 5 yrs, where club hrs/yr = avg hrs per pilot × pilots (Plan B: full cap + associate cap; Plan C: full cap). <b>New-member initiations</b> = members needed to grow from today’s 30 full / 0 associates to each plan’s caps × the initiation fee, paid once. The ≈27 hrs/pilot default is from the 2026 electronic Flight Log (~540 member hrs Mar 1–Oct 26, annualized ≈ 820 hrs/yr ÷ 30 full members), so club hours rise as members are added. <b>Associate members apply to Plan B only</b> — Plan C does not admit associates, so avg associates, associate turnover and associate initiation never change Plan C (associate dues → fund = associates × (Plan B dues − $235 + $10 upgrade) × 60 months, the same fund share as a full member).</p>
   </div>
   <div class="grid g3">
