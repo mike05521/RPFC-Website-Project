@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2027 Board Election Ballot | Riverside Pilots Flying Club</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0b6bcb" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b6bcb'/%3E%3Cpath d='M50 18l7 22 22 7-22 7-7 22-7-22-22-7 22-7z' fill='white'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="ballot.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="../index.html">Riverside Pilots Flying Club</a>
+    </div>
+  </header>
+
+  <div class="hero-band">
+    <div class="wrap">
+      <p class="eyebrow">Members only · Unpublished</p>
+      <h1>2027 Board Election</h1>
+      <p class="lead">Select exactly <strong>7</strong> of the 8 board candidates. One ballot per member email.</p>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+      <section class="card" id="step-email">
+        <h2 style="font-size:1.35rem">Verify your email</h2>
+        <p class="lead">Use the address on the club members Google group (<code>members@riversidepilotsflyingclub.com</code>).</p>
+        <label class="field-label" for="member-email">Member email</label>
+        <input id="member-email" type="email" autocomplete="email" placeholder="you@email.com" required />
+        <div class="actions">
+          <button type="button" class="btn btn-blue" id="btn-verify">Continue to ballot</button>
+        </div>
+        <p id="email-msg" class="msg hidden" role="alert"></p>
+      </section>
+
+      <section class="card hidden" id="step-ballot">
+        <h2 style="font-size:1.35rem">Your ballot</h2>
+        <p class="lead">Voting as <strong id="voter-email-display"></strong>. Choices are secret; only totals are stored.</p>
+        <ul class="candidate-list" id="candidate-list"></ul>
+        <p class="selection-count" id="selection-count">0 of 7 selected</p>
+        <div class="actions">
+          <button type="button" class="btn btn-sun" id="btn-submit" disabled>Submit ballot</button>
+          <button type="button" class="btn btn-ghost" id="btn-back">Change email</button>
+        </div>
+        <p id="ballot-msg" class="msg hidden" role="alert"></p>
+        <p class="fine">Submitting records your vote on the server. Clearing cookies cannot be used to vote twice with the same email.</p>
+      </section>
+
+      <section class="card hidden" id="step-done">
+        <h2 style="font-size:1.35rem">Thank you</h2>
+        <p class="lead">Your ballot has been recorded. You may close this page.</p>
+        <p class="fine">This browser is marked as having voted; the club cannot see which candidates you chose.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">Riverside Pilots Flying Club · KRAL · This page is not linked from the public site.</div>
+  </footer>
+
+  <script>
+    var REQUIRED = 7;
+    var CANDIDATES = [
+      { id: "bob-pring", name: "Bob Pring" },
+      { id: "chris-marasco", name: "Chris Marasco" },
+      { id: "mike-david", name: "Mike David" },
+      { id: "troy-durbin", name: "Troy Durbin" },
+      { id: "larry-hopkins", name: "Larry Hopkins" },
+      { id: "ron-becker", name: "Ron Becker" },
+      { id: "brett-hyder", name: "Brett Hyder" },
+      { id: "kai-madison", name: "Kai Madison" }
+    ];
+    var STORAGE_KEY = "rpfc_2027_ballot_email";
+
+    var stepEmail = document.getElementById("step-email");
+    var stepBallot = document.getElementById("step-ballot");
+    var stepDone = document.getElementById("step-done");
+    var emailInput = document.getElementById("member-email");
+    var emailMsg = document.getElementById("email-msg");
+    var ballotMsg = document.getElementById("ballot-msg");
+    var listEl = document.getElementById("candidate-list");
+    var countEl = document.getElementById("selection-count");
+    var submitBtn = document.getElementById("btn-submit");
+    var voterDisplay = document.getElementById("voter-email-display");
+
+    function showMsg(el, text, kind) {
+      el.textContent = text;
+      el.className = "msg msg-" + kind;
+      el.classList.remove("hidden");
+    }
+
+    function hideMsg(el) {
+      el.classList.add("hidden");
+    }
+
+    function showStep(name) {
+      stepEmail.classList.toggle("hidden", name !== "email");
+      stepBallot.classList.toggle("hidden", name !== "ballot");
+      stepDone.classList.toggle("hidden", name !== "done");
+    }
+
+    CANDIDATES.forEach(function (c) {
+      var li = document.createElement("li");
+      li.innerHTML =
+        '<label><input type="checkbox" name="candidate" value="' +
+        c.id +
+        '" /> <span>' +
+        c.name +
+        "</span></label>";
+      listEl.appendChild(li);
+    });
+
+    function selectedIds() {
+      return Array.prototype.slice
+        .call(document.querySelectorAll('input[name="candidate"]:checked'))
+        .map(function (el) {
+          return el.value;
+        });
+    }
+
+    function updateCount() {
+      var n = selectedIds().length;
+      countEl.textContent = n + " of " + REQUIRED + " selected";
+      countEl.classList.toggle("invalid", n !== REQUIRED);
+      submitBtn.disabled = n !== REQUIRED;
+    }
+
+    listEl.addEventListener("change", function (e) {
+      if (e.target.name !== "candidate") return;
+      var n = selectedIds().length;
+      if (n > REQUIRED) {
+        e.target.checked = false;
+      }
+      updateCount();
+    });
+
+    async function verifyEmail() {
+      hideMsg(emailMsg);
+      var email = emailInput.value.trim();
+      if (!email) {
+        showMsg(emailMsg, "Enter your member email address.", "error");
+        return;
+      }
+      var btn = document.getElementById("btn-verify");
+      btn.disabled = true;
+      try {
+        var res = await fetch("/api/election/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email })
+        });
+        var data = await res.json();
+        if (!data.ok) {
+          if (data.error === "not_allowlisted") {
+            showMsg(
+              emailMsg,
+              "That email is not on the members list. Use the address on the club Google group or contact the secretary.",
+              "error"
+            );
+          } else {
+            showMsg(emailMsg, "Could not verify email. Try again later.", "error");
+          }
+          return;
+        }
+        if (data.alreadyVoted) {
+          sessionStorage.setItem(STORAGE_KEY, email.toLowerCase());
+          showStep("done");
+          return;
+        }
+        sessionStorage.setItem(STORAGE_KEY, email.toLowerCase());
+        voterDisplay.textContent = email;
+        showStep("ballot");
+        updateCount();
+      } catch (err) {
+        showMsg(emailMsg, "Network error. Try again.", "error");
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function submitBallot() {
+      hideMsg(ballotMsg);
+      var email = sessionStorage.getItem(STORAGE_KEY) || emailInput.value.trim();
+      var ids = selectedIds();
+      if (ids.length !== REQUIRED) {
+        showMsg(ballotMsg, "Select exactly " + REQUIRED + " candidates.", "error");
+        return;
+      }
+      submitBtn.disabled = true;
+      try {
+        var res = await fetch("/api/election/vote", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email, candidates: ids })
+        });
+        var data = await res.json();
+        if (!data.ok) {
+          if (data.error === "already_voted") {
+            showStep("done");
+            return;
+          }
+          if (data.error === "not_allowlisted") {
+            showMsg(ballotMsg, "Email no longer eligible.", "error");
+          } else {
+            showMsg(ballotMsg, data.message || "Could not submit ballot.", "error");
+          }
+          submitBtn.disabled = false;
+          updateCount();
+          return;
+        }
+        showStep("done");
+      } catch (err) {
+        showMsg(ballotMsg, "Network error. Try again.", "error");
+        submitBtn.disabled = false;
+        updateCount();
+      }
+    }
+
+    document.getElementById("btn-verify").addEventListener("click", verifyEmail);
+    emailInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") verifyEmail();
+    });
+    document.getElementById("btn-submit").addEventListener("click", submitBallot);
+    document.getElementById("btn-back").addEventListener("click", function () {
+      showStep("email");
+      hideMsg(ballotMsg);
+    });
+
+    (function init() {
+      var saved = sessionStorage.getItem(STORAGE_KEY);
+      if (saved) emailInput.value = saved;
+      if (document.cookie.indexOf("rpfc_2027_ballot_voted=1") !== -1 && saved) {
+        fetch("/api/election/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: saved })
+        })
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (data) {
+            if (data.ok && data.alreadyVoted) showStep("done");
+          })
+          .catch(function () {});
+      }
+    })();
+  </script>
+</body>
+</html>

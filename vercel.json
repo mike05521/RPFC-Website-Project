@@ -1,0 +1,19 @@
+{
+  "headers": [
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/ballot/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/data/:path*", "destination": "/api/_blocked" }
+  ]
+}
